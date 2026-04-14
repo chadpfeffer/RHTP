@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>RHTP NOFO Category Reference</title>
+<style>
+:root{--pri:#0b5cad;--pri2:#1e40af;--bg:#f8fafc;--card:#ffffff;--border:#e2e8f0;--text:#0f172a;--muted:#64748b;--ok:#10b981;--warn:#f59e0b;--err:#ef4444}
+*{box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);margin:0;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding:24px}
+nav.topbar{display:flex;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 16px;margin-bottom:16px;font-size:13px}
+nav.topbar a{color:var(--pri);text-decoration:none;font-weight:600;padding:6px 12px;border-radius:6px}
+nav.topbar a:hover{background:#eef2ff}
+header.hero{background:linear-gradient(135deg,#0b5cad 0%,#1e40af 100%);color:#fff;padding:32px;border-radius:14px;margin-bottom:24px;box-shadow:0 4px 16px rgba(11,92,173,.15)}
+header.hero h1{margin:0 0 6px 0;font-size:28px}
+header.hero .sub{opacity:.92;font-size:14px}
+.jump{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:20px;font-size:13px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.jump a{text-decoration:none;padding:6px 10px;border-radius:6px;color:#fff;font-weight:700;font-size:12px}
+.rule{background:#fef3c7;border-left:4px solid var(--warn);padding:14px 18px;border-radius:6px;margin:18px 0;font-size:14px}
+.rule strong{color:#92400e}
+.cat{background:var(--card);border:1px solid var(--border);border-left:6px solid var(--accent);border-radius:12px;padding:24px 28px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.cat .head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:8px}
+.cat h2{margin:0;font-size:22px;color:var(--pri2)}
+.cat .budget-badge{background:var(--accent);color:#fff;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap}
+.cms-block{background:#fafbff;border:1px solid #c7d2fe;border-left:5px solid var(--pri);border-radius:8px;padding:14px 18px;margin:14px 0 10px 0}
+.cms-block .label{font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--pri);font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.cms-block .seal{background:var(--pri);color:#fff;padding:2px 7px;border-radius:10px;font-size:10px}
+.cms-block blockquote{margin:0;padding:0;font-size:14px;font-family:Georgia,"Times New Roman",serif;color:#1e293b;line-height:1.6}
+.cms-block blockquote::before{content:"\201C";font-size:22px;color:var(--pri);font-weight:700;margin-right:3px}
+.cms-block blockquote::after{content:"\201D";font-size:22px;color:var(--pri);font-weight:700;margin-left:2px}
+.cms-block .cite{font-size:11px;color:var(--muted);margin-top:8px;font-style:italic}
+.cms-cap{background:#fef2f2;border:1px solid #fecaca;border-left:4px solid var(--err);border-radius:6px;padding:10px 14px;margin-top:10px}
+.cms-cap .label{font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:#991b1b;font-weight:700;margin-bottom:4px}
+.cms-cap blockquote{margin:0;font-size:12.5px;font-family:Georgia,"Times New Roman",serif;color:#7f1d1d;line-height:1.55}
+.cms-cap blockquote::before{content:"\201C";font-weight:700}
+.cms-cap blockquote::after{content:"\201D";font-weight:700}
+.plain{background:#f8fafc;border-radius:8px;padding:14px 16px;margin:14px 0;font-size:14px;border:1px solid var(--border)}
+.plain strong{color:var(--pri2)}
+.cat h3{font-size:13px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin:18px 0 6px 0}
+.cat ul{margin:4px 0;padding-left:20px;font-size:13px}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:12px}
+.box{border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+.box.dont{background:#fef2f2;border-left:3px solid var(--err)}
+.box.dont h4{color:#991b1b;margin:0 0 6px 0;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+.box.say{background:#f0fdf4;border-left:3px solid var(--ok)}
+.box.say h4{color:#14532d;margin:0 0 6px 0;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+.box p{margin:0;font-size:13px}
+.lang{background:#eef2ff;border-left:3px solid var(--pri);border-radius:6px;padding:12px 14px;margin-top:12px;font-size:13px;font-style:italic;color:#1e293b}
+.persona{font-size:12px;color:var(--muted);margin-top:10px;padding:8px 12px;background:#f8fafc;border-radius:6px}
+.sol-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+.sol-table th{background:#f1f5f9;text-align:left;padding:8px 10px;font-size:11px;text-transform:uppercase;letter-spacing:.3px;color:#475569;border-bottom:2px solid var(--border)}
+.sol-table td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+.sol-table td:first-child{font-weight:600;color:var(--pri2);width:32%}
+footer{text-align:center;color:var(--muted);font-size:11px;margin:30px 0 10px 0}
+@media(max-width:720px){.twocol{grid-template-columns:1fr}}
+</style>
+</head><body>
+<div class="wrap">
+
+<nav class="topbar">
+  <div><a href="index.html">&larr; All States</a> &nbsp; <a href="accounts.html">GES Provider Dashboard</a></div>
+  <div><strong>NOFO Category Reference</strong></div>
+</nav>
+
+<header class="hero">
+  <div class="sub">Rural Health Transformation Program · Reference for new team members</div>
+  <h1>NOFO Category Reference (A–K)</h1>
+  <div class="sub">Every allowable use of funds from the CMS-RHT-26-001 NOFO, with verbatim CMS text, any applicable caps, and Cisco positioning for each.</div>
+</header>
+
+<div class="rule"><strong>THE #1 RULE of RHTP selling:</strong> Position Cisco into the clinical outcome categories (G, E, H, A, D, K) wherever possible. These categories are scored on measurable clinical outcomes (time-to-specialist, workforce retention, behavioral health access, chronic disease improvement), which is where state evaluators are rewarded. Category F (IT advances) is a legitimate home for security specifically — CMS names "cybersecurity capability development" as an allowable F use — but everything else positioned as IT loses the outcome-scoring leverage.</div>
+
+<div class="jump"><strong style="margin-right:6px">Jump to:</strong><a href="#cat-A" style="background:#7c3aed">A</a><a href="#cat-B" style="background:#b91c1c">B</a><a href="#cat-C" style="background:#06b6d4">C</a><a href="#cat-D" style="background:#64748b">D</a><a href="#cat-E" style="background:#0ea5e9">E</a><a href="#cat-F" style="background:#ef4444">F</a><a href="#cat-G" style="background:#10b981">G</a><a href="#cat-H" style="background:#f59e0b">H</a><a href="#cat-I" style="background:#ec4899">I</a><a href="#cat-J" style="background:#6366f1">J</a><a href="#cat-K" style="background:#0f766e">K</a></div>
+
+<div class="rule" style="background:#eef2ff;border-left-color:#0b5cad;color:#1e293b">
+<strong style="color:#1e40af">Quick primer:</strong> Under Public Law 119-21, Congress established the $50B RHT Program to distribute $10B/year from FY2026–2030 across all 50 states. Each state writes its own application and must use its awarded funds for at least three of the eleven permissible uses listed below (Section 71401 of P.L. 119-21). Categories B and J are capped (15% and 20% respectively); the rest are uncapped but subject to restrictions in the NOFO's funding policies and limitations section.
+</div>
+
+
+<section id="cat-A" class="cat" style="--accent:#7c3aed">
+  <div class="head">
+    <h2>A — Prevention and chronic disease</h2>
+    <div class="budget-badge">No cap</div>
+  </div>
+
+  <div class="cms-block">
+    <div class="label"><span class="seal">CMS</span> Official NOFO text — verbatim</div>
+    <blockquote>Promoting evidence-based, measurable interventions to improve prevention and chronic disease management.</blockquote>
+    <div class="cite">— CMS-RHT-26-001, Notice of Funding Opportunity (NOFO), §&quot;Use of funds&quot;, pp. 11–12</div>
+  </div>
+  
+
+  <div class="plain"><strong>Plain English:</strong> Money for programs that prevent disease or help people manage chronic conditions (diabetes, hypertension, heart disease, cancer screening). The state has to show measurable outcomes — not just &quot;we built a thing,&quot; but &quot;we reduced HbA1c by X% in Y population.&quot;</div>
+
+  <h3>Cisco solutions that map here</h3>
+  <table class="sol-table">
+    <thead><tr><th>Solution</th><th>What it does in this category</th></tr></thead>
+    <tbody><tr><td>Splunk</td><td>Population health analytics — claims + EHR + SDOH ingestion, cohort stratification</td></tr><tr><td>Webex Contact Center + AI Agents</td><td>Proactive outreach (screening reminders, care-gap closure)</td></tr><tr><td>Cisco Security Suite</td><td>HIPAA-compliant data plane for the analytics workload</td></tr></tbody>
+  </table>
+
+  <div class="twocol">
+    <div class="box dont">
+      <h4>✗ DON'T SAY (IT framing)</h4>
+      <p>Log management. Monitoring tool. Call center software. SIEM.</p>
+    </div>
+    <div class="box say">
+      <h4>✓ SAY INSTEAD (clinical framing)</h4>
+      <p>Population health analytics platform. Clinical decision support. Quality measurement infrastructure. Proactive patient outreach for chronic disease management.</p>
+    </div>
+  </div>
+
+  <h3>Grant-ready budget narrative (paste-able)</h3>
+  <div class="lang">"Data analytics platform enabling population-level chronic disease management, stratification of high-risk cohorts, and proactive outreach to close care gaps — measured against CMS quality measures. Includes clinical workflow integration with existing EHR."</div>
+
+  <div class="persona"><strong>Who at the customer cares:</strong> CMO · Population Health VP · Quality Officer · CMIO</div>
+</section>
+
+<section id="cat-B" class="cat" style="--accent:#b91c1c">
+  <div class="head">
+    <h2>B — Provider payments</h2>
+    <div class="budget-badge">15% CAP</div>
+  </div>
+
+  <div class="cms-block">
+    <div class="label"><span class="seal">CMS</span> Official NOFO text — verbatim</div>
+    <blockquote>Providing payments to health care providers for the provision of health care items or services, subject to restrictions described in the funding policies and limitations.</blockquote>
+    <div class="cite">— CMS-RHT-26-001, Notice of Funding Opportunity (NOFO), §&quot;Use of funds&quot;, pp. 11–12</div>
+  </div>
+  
+  <div class="cms-cap">
+    <div class="label">CMS cap / restriction — verbatim</div>
+    <blockquote>Funding for provider payments, as described in category B of the program requirements and expectations use of funds section, cannot exceed 15% of the total funding CMS awards States in a given budget period.</blockquote>
+    <div class="cite" style="font-size:10px;color:#991b1b;margin-top:6px;font-style:italic">— CMS-RHT-26-001, NOFO, §&quot;Program-specific limitations / Unallowable costs&quot;, pp. 19–20</div>
+  </div>
+
+  <div class="plain"><strong>Plain English:</strong> Direct reimbursement to providers for care delivery. Capped at 15% of the state&#x27;s total RHTP award and subject to strict rules: the NOFO will not allow payments that duplicate billable services or alter existing fee schedules. This is not a natural fit for Cisco — it&#x27;s provider reimbursement, not infrastructure.</div>
+
+  <h3>Cisco solutions that map here</h3>
+  <table class="sol-table">
+    <thead><tr><th>Solution</th><th>What it does in this category</th></tr></thead>
+    <tbody><tr><td>Splunk (grant-compliance reporting)</td><td>Audit trail and reporting for provider-payment allocations required by CMS</td></tr></tbody>
+  </table>
+
+  <div class="twocol">
+    <div class="box dont">
+      <h4>✗ DON'T SAY (IT framing)</h4>
+      <p>Direct provider payments are not a Cisco line item. Do not try to position hardware here.</p>
+    </div>
+    <div class="box say">
+      <h4>✓ SAY INSTEAD (clinical framing)</h4>
+      <p>If the customer is using B-category funding, offer Splunk-based grant reporting/audit as the compliance wrapper — nothing else.</p>
+    </div>
+  </div>
+
+  <h3>Grant-ready budget narrative (paste-able)</h3>
+  <div class="lang">"Grant compliance and reporting infrastructure supporting audit and accountability requirements for provider-payment allocations under 2 CFR 200."</div>
+
+  <div class="persona"><strong>Who at the customer cares:</strong> CFO · Grant Manager · Compliance Officer</div>
+</section>
+
+<section id="cat-C" class="cat" style="--accent:#06b6d4">
+  <div class="head">
+    <h2>C — Consumer tech solutions</h2>
+    <div class="budget-badge">No cap</div>
+  </div>
+
+  <div class="cms-block">
+    <div class="label"><span class="seal">CMS</span> Official NOFO text — verbatim</div>
+    <blockquote>Promoting consumer-facing, technology-driven solutions for the prevention and management of chronic diseases.</blockquote>
+    <div class="cite">— CMS-RHT-26-001, Notice of Funding Opportunity (NOFO), §&quot;Use of funds&quot;, pp. 11–12</div>
+  </div>
+  
+
+  <div class="plain"><strong>Plain English:</strong> The patient-experience side — technology that makes it easier for rural patients to find care, schedule it, get to it, and stay engaged with their chronic disease management. Digital front door, not back-office IT.</div>
+
+  <h3>Cisco solutions that map here</h3>
+  <table class="sol-table">
+    <thead><tr><th>Solution</th><th>What it does in this category</th></tr></thead>
+    <tbody><tr><td>Webex Contact Center + AI Agents</td><td>Self-service scheduling, triage, navigation, reminders</td></tr><tr><td>ThousandEyes</td><td>Monitors the patient digital experience end-to-end</td></tr></tbody>
+  </table>
+
+  <div class="twocol">
+    <div class="box dont">
+      <h4>✗ DON'T SAY (IT framing)</h4>
+      <p>Call center software. Phone system. IVR. Contact center.</p>
+    </div>
+    <div class="box say">
+      <h4>✓ SAY INSTEAD (clinical framing)</h4>
+      <p>Patient access platform. Digital front door. Care navigation. Patient experience infrastructure.</p>
+    </div>
+  </div>
+
+  <h3>Grant-ready budget narrative (paste-able)</h3>
+  <div class="lang">"Patient-facing digital access platform improving healthcare navigation, scheduling, and triage for rural populations — reducing no-shows and improving time-to-care for underserved communities."</div>
+
+  <div class="persona"><strong>Who at the customer cares:</strong> CMO · Chief Digital Officer · Patient Experience VP · CNO</div>
+</section>
+
+<section id="cat-D" class="cat" style="--accent:#64748b">
+  <div class="head">
+    <h2>D — Training and technical assistance</h2>
+    <div class="budget-badge">No cap</div>
+  </div>
+
+  <div class="cms-block">
+    <div class="label"><span class="seal">CMS</span> Official NOFO text — verbatim</div>
+    <blockquote>Providing training and technical assistance for the development and adoption of technology-enabled solutions that improve care delivery in rural hospitals, including remote monitoring, robotics, artificial intelligence, and other advanced technologies.</blockquote>
+    <div class="cite">— CMS-RHT-26-001, Notice of Funding Opportunity (NOFO), §&quot;Use of funds&quot;, pp. 11–12</div>
+  </div>
+  
+
+  <div class="plain"><strong>Plain English:</strong> Money for training and support of the technology-enabled care models rural hospitals are adopting — remote monitoring, robotics, AI, and advanced clinical technology. This is where Cisco&#x27;s compute, edge, and AI infrastructure story fits alongside the training delivery platform.</div>
+
+  <h3>Cisco solutions that map here</h3>
+  <table class="sol-table">
+    <thead><tr><th>Solution</th><th>What it does in this category</th></tr></thead>
+    <tbody><tr><td>UCS / AI Infrastructure / Unified Edge</td><td>The compute platform for remote monitoring, robotics, AI inference at rural hospitals</td></tr><tr><td>Webex Events / Video Endpoints</td><td>Training delivery infrastructure for advanced technology adoption</td></tr><tr><td>Splunk</td><td>Training analytics — competency tracking, variation analysis, adoption measurement</td></tr></tbody>
+  </table>
+
+  <div class="twocol">
+    <div class="box dont">
+      <h4>✗ DON'T SAY (IT framing)</h4>
+      <p>Server hardware. Log management. Video conferencing.</p>
+    </div>
+    <div class="box say">
+      <h4>✓ SAY INSTEAD (clinical framing)</h4>
+      <p>Technology-enabled care platform supporting rural hospital adoption of remote monitoring, AI-assisted care, and advanced clinical technology — with integrated training delivery and competency analytics.</p>
+    </div>
+  </div>
+
+  <h3>Grant-ready budget narrative (paste-able)</h3>
+  <div class="lang">"Infrastructure and training platform supporting rural hospital adoption of technology-enabled care delivery (remote monitoring, AI-assisted diagnostics, robotics) with integrated workforce training and competency measurement."</div>
+
+  <div class="persona"><strong>Who at the customer cares:</strong> CMO · CMIO · CHRO · Education Director · Chief Innovation Officer</div>
+</section>
+
+<section id="cat-E" class="cat" style="--accent:#0ea5e9">
+  <div class="head">
+    <h2>E — Workforce</h2>
+    <div class="budget-badge">No cap</div>
+  </div>
+
+  <div class="cms-block">
+    <div class="label"><span class="seal">CMS</span> Official NOFO text — verbatim</div>
+    <blockquote>Recruiting and retaining clinical workforce talent to rural areas, with commitments to serve rural communities for a minimum of 5 years.</blockquote>
+    <div class="cite">— CMS-RHT-26-001, Notice of Funding Opportunity (NOFO), §&quot;Use of funds&quot;, pp. 11–12</div>
+  </div>
+  
+
+  <div class="plain"><strong>Plain English:</strong> The rural workforce crisis is the #1 political issue in every state&#x27;s RHTP narrative. Recruitment bonuses, loan repayment, residency pipelines, rural rotations, and — critically — the technology that makes rural practice sustainable so doctors don&#x27;t leave. Note the 5-year service commitment is a CMS requirement.</div>
+
+  <h3>Cisco solutions that map here</h3>
+  <table class="sol-table">
+    <thead><tr><th>Solution</th><th>What it does in this category</th></tr></thead>
+    <tbody><tr><td>Webex Events / Video Endpoints</td><td>CME delivery, grand rounds, simulation broadcast to rural sites</td></tr><tr><td>Webex Meetings / Instant Connect</td><td>Tele-mentoring, residency rotations, specialty consult for rural clinicians</td></tr><tr><td>Webex Contact Center</td><td>Clinical support workflows (&quot;ask a specialist&quot;)</td></tr></tbody>
+  </table>
+
+  <div class="twocol">
+    <div class="box dont">
+      <h4>✗ DON'T SAY (IT framing)</h4>
+      <p>Meeting room hardware. Event platform. Video conferencing. Virtual events.</p>
+    </div>
+    <div class="box say">
+      <h4>✓ SAY INSTEAD (clinical framing)</h4>
+      <p>Clinical education and workforce retention platform. CME delivery infrastructure. Tele-mentoring backbone. Rural clinician support network.</p>
+    </div>
+  </div>
+
+  <h3>Grant-ready budget narrative (paste-able)</h3>
+  <div class="lang">"Technology-enabled training infrastructure reducing provider isolation, supporting specialty consultation for rural clinicians, and delivering CME credits required for rural licensure retention — directly supporting the 5-year rural service commitment required under E."</div>
+
+  <div class="persona"><strong>Who at the customer cares:</strong> CMO · GME Director · CNO · CHRO · Residency Director</div>
+</section>
+
+<section id="cat-F" class="cat" style="--accent:#ef4444">
+  <div class="head">
+    <h2>F — IT advances</h2>
+    <div class="budget-badge">No blanket cap (see EMR restriction)</div>
+  </div>
+
+  <div class="cms-block">
+    <div class="label"><span class="seal">CMS</span> Official NOFO text — verbatim</div>
+    <blockquote>Providing technical assistance, software, and hardware for significant information technology advances designed to improve efficiency, enhance cybersecurity capability development, and improve patient health outcomes.</blockquote>
+    <div class="cite">— CMS-RHT-26-001, Notice of Funding Opportunity (NOFO), §&quot;Use of funds&quot;, pp. 11–12</div>
+  </div>
+  
+  <div class="cms-cap">
+    <div class="label">CMS cap / restriction — verbatim</div>
+    <blockquote>No more than 5% of total funding CMS awards to a State in a given budget period can support funding the replacement of an EMR system if a previous HITECH certified EMR system is already in place as of September 1, 2025.</blockquote>
+    <div class="cite" style="font-size:10px;color:#991b1b;margin-top:6px;font-style:italic">— CMS-RHT-26-001, NOFO, §&quot;Program-specific limitations / Unallowable costs&quot;, pp. 19–20</div>
+  </div>
+
+  <div class="plain"><strong>Plain English:</strong> IMPORTANT CORRECTION: F is NOT capped at 5% overall. The 5% cap applies ONLY to EMR replacement in states that already have a HITECH-certified EMR. F itself has no blanket cap. However, F is still where you DON&#x27;T want to position Cisco — not because of a cap, but because F is scored on efficiency and cybersecurity improvements, while G/E/H/A are scored on clinical outcomes. The clinical categories give you outcome metrics the state RFP evaluators reward heavily. Same products, better scoring posture.</div>
+
+  <h3>Cisco solutions that map here</h3>
+  <table class="sol-table">
+    <thead><tr><th>Solution</th><th>What it does in this category</th></tr></thead>
+    <tbody><tr><td>Catalyst Campus Switching + Wi-Fi 7</td><td>If absolutely must be IT-framed</td></tr><tr><td>Meraki Cloud-Managed</td><td>If absolutely must be IT-framed</td></tr><tr><td>Cisco Security Suite</td><td>Category F explicitly names cybersecurity as an allowable use — this is a legitimate home for security</td></tr></tbody>
+  </table>
+
+  <div class="twocol">
+    <div class="box dont">
+      <h4>✗ DON'T SAY (IT framing)</h4>
+      <p>Outside of security, almost every Cisco framing lives here by default. Reposition into G / E / H / A / D / I wherever possible.</p>
+    </div>
+    <div class="box say">
+      <h4>✓ SAY INSTEAD (clinical framing)</h4>
+      <p>For security specifically: &quot;cybersecurity capability development&quot; (CMS&#x27;s own words) is a legitimate F-category use. For everything else, reposition.</p>
+    </div>
+  </div>
+
+  <h3>Grant-ready budget narrative (paste-able)</h3>
+  <div class="lang">"Cybersecurity capability development supporting the integrity of rural health IT systems and patient data — explicitly named as an allowable use under F. (For non-security Cisco, reposition into clinical categories.)"</div>
+
+  <div class="persona"><strong>Who at the customer cares:</strong> CISO (legitimate F buyer for security) · CIO / IT Director (traditional — but clinical categories have better scoring leverage)</div>
+</section>
+
+<section id="cat-G" class="cat" style="--accent:#10b981">
+  <div class="head">
+    <h2>G — Appropriate care availability</h2>
+    <div class="budget-badge">No cap</div>
+  </div>
+
+  <div class="cms-block">
+    <div class="label"><span class="seal">CMS</span> Official NOFO text — verbatim</div>
+    <blockquote>Assisting rural communities to right size their health care delivery systems by identifying needed preventative, ambulatory, pre-hospital, emergency, acute inpatient care, outpatient care, and post-acute care service lines.</blockquote>
+    <div class="cite">— CMS-RHT-26-001, Notice of Funding Opportunity (NOFO), §&quot;Use of funds&quot;, pp. 11–12</div>
+  </div>
+  
+
+  <div class="plain"><strong>Plain English:</strong> The most natural home for Cisco. &quot;Right-size care delivery&quot; across the full continuum (preventative through post-acute) means connecting rural patients to the care they need — and everything Cisco builds in telehealth, care coordination, and clinical communications lives here. G is uncapped and is a scored category.</div>
+
+  <h3>Cisco solutions that map here</h3>
+  <table class="sol-table">
+    <thead><tr><th>Solution</th><th>What it does in this category</th></tr></thead>
+    <tbody><tr><td>Catalyst SD-WAN</td><td>Clinical backbone connecting rural sites to central resources</td></tr><tr><td>Webex Calling + Messaging</td><td>Unified clinical communications across the care continuum</td></tr><tr><td>Webex Meetings + Video Endpoints</td><td>Telehealth, specialty consults, virtual rounds, e-consults</td></tr><tr><td>Meraki</td><td>Clinical site connectivity — clinics, ED, school health, home</td></tr></tbody>
+  </table>
+
+  <div class="twocol">
+    <div class="box dont">
+      <h4>✗ DON'T SAY (IT framing)</h4>
+      <p>Network upgrade. WAN connectivity. Phone system. Unified communications. Video conferencing.</p>
+    </div>
+    <div class="box say">
+      <h4>✓ SAY INSTEAD (clinical framing)</h4>
+      <p>Care delivery backbone. Telehealth infrastructure. Specialty consult network. Care coordination platform across the preventative-to-post-acute continuum.</p>
+    </div>
+  </div>
+
+  <h3>Grant-ready budget narrative (paste-able)</h3>
+  <div class="lang">"Secure wide-area connectivity and clinical communications infrastructure enabling real-time specialist consultation, telehealth delivery, and care coordination for rural populations across the full care continuum (preventative, ambulatory, pre-hospital, emergency, acute, outpatient, post-acute) — directly supporting the &quot;right-sizing&quot; objective in G."</div>
+
+  <div class="persona"><strong>Who at the customer cares:</strong> CMO · CNO · Service Line VPs (stroke, cardiology, OB) · Chief Transformation Officer</div>
+</section>
+
+<section id="cat-H" class="cat" style="--accent:#f59e0b">
+  <div class="head">
+    <h2>H — Behavioral health</h2>
+    <div class="budget-badge">No cap</div>
+  </div>
+
+  <div class="cms-block">
+    <div class="label"><span class="seal">CMS</span> Official NOFO text — verbatim</div>
+    <blockquote>Supporting access to opioid use disorder treatment services (as defined in section 1861(jjj)(1) of the Social Security Act), other substance use disorder treatment services, and mental health services.</blockquote>
+    <div class="cite">— CMS-RHT-26-001, Notice of Funding Opportunity (NOFO), §&quot;Use of funds&quot;, pp. 11–12</div>
+  </div>
+  
+
+  <div class="plain"><strong>Plain English:</strong> Rural America&#x27;s opioid and behavioral health crisis is a named CMS priority. The NOFO specifically calls out OUD treatment services (citing Social Security Act §1861(jjj)(1)), broader SUD services, and general mental health. Telepsychiatry, tele-SUD, MAT support, and crisis response are all natural fits.</div>
+
+  <h3>Cisco solutions that map here</h3>
+  <table class="sol-table">
+    <thead><tr><th>Solution</th><th>What it does in this category</th></tr></thead>
+    <tbody><tr><td>Webex Meetings / Instant Connect</td><td>Telepsychiatry, tele-SUD, on-demand consults from ED and primary care</td></tr><tr><td>Webex Contact Center + AI Agents</td><td>988-aligned crisis lines, warm handoffs, care navigation</td></tr><tr><td>Meraki</td><td>Clinic, ED, school site connectivity</td></tr></tbody>
+  </table>
+
+  <div class="twocol">
+    <div class="box dont">
+      <h4>✗ DON'T SAY (IT framing)</h4>
+      <p>Video conferencing. Communications platform. Call center.</p>
+    </div>
+    <div class="box say">
+      <h4>✓ SAY INSTEAD (clinical framing)</h4>
+      <p>Tele-behavioral health platform. Telepsychiatry infrastructure. Crisis response backbone. OUD/SUD treatment delivery.</p>
+    </div>
+  </div>
+
+  <h3>Grant-ready budget narrative (paste-able)</h3>
+  <div class="lang">"Telehealth platform enabling licensed behavioral health providers to deliver opioid use disorder treatment services (as defined in SSA §1861(jjj)(1)), other SUD services, and mental health care to rural populations — reducing ED behavioral health boarding and expanding MAT access."</div>
+
+  <div class="persona"><strong>Who at the customer cares:</strong> CMO · Behavioral Health Director · SUD Program Director · Crisis Services Director</div>
+</section>
+
+<section id="cat-I" class="cat" style="--accent:#ec4899">
+  <div class="head">
+    <h2>I — Innovative care</h2>
+    <div class="budget-badge">No cap</div>
+  </div>
+
+  <div class="cms-block">
+    <div class="label"><span class="seal">CMS</span> Official NOFO text — verbatim</div>
+    <blockquote>Developing projects that support innovative models of care that include value-based care arrangements and alternative payment models, as appropriate.</blockquote>
+    <div class="cite">— CMS-RHT-26-001, Notice of Funding Opportunity (NOFO), §&quot;Use of funds&quot;, pp. 11–12</div>
+  </div>
+  
+
+  <div class="plain"><strong>Plain English:</strong> IMPORTANT: I is about care-delivery MODELS (value-based care, alternative payment arrangements) — not about &quot;AI at the edge&quot; the way I earlier described it. AI/edge compute fits better under D (Training &amp; TA for advanced technologies). Category I is where risk-sharing, capitation, and APM infrastructure live. Cisco maps indirectly via the data plane and coordination infrastructure these models need to function.</div>
+
+  <h3>Cisco solutions that map here</h3>
+  <table class="sol-table">
+    <thead><tr><th>Solution</th><th>What it does in this category</th></tr></thead>
+    <tbody><tr><td>Splunk</td><td>Data analytics infrastructure for quality measurement and risk adjustment in VBC arrangements</td></tr><tr><td>Webex Contact Center</td><td>Patient engagement / care coordination workflows required by VBC models</td></tr><tr><td>Catalyst SD-WAN</td><td>Data plane between payer, provider, and patient systems under APM</td></tr></tbody>
+  </table>
+
+  <div class="twocol">
+    <div class="box dont">
+      <h4>✗ DON'T SAY (IT framing)</h4>
+      <p>Server hardware. Compute refresh. AI infrastructure. (AI infrastructure fits under D.)</p>
+    </div>
+    <div class="box say">
+      <h4>✓ SAY INSTEAD (clinical framing)</h4>
+      <p>Value-based care enablement platform. APM data plane. Quality measurement and risk-adjustment infrastructure.</p>
+    </div>
+  </div>
+
+  <h3>Grant-ready budget narrative (paste-able)</h3>
+  <div class="lang">"Data infrastructure and coordination platform supporting value-based care arrangements and alternative payment models — enabling quality measurement, risk stratification, and patient engagement workflows required by APM contracts."</div>
+
+  <div class="persona"><strong>Who at the customer cares:</strong> CMO · Chief Value Officer · VBC / Population Health VP · CFO</div>
+</section>
+
+<section id="cat-J" class="cat" style="--accent:#6366f1">
+  <div class="head">
+    <h2>J — Capital expenditures and infrastructure</h2>
+    <div class="budget-badge">20% CAP</div>
+  </div>
+
+  <div class="cms-block">
+    <div class="label"><span class="seal">CMS</span> Official NOFO text — verbatim</div>
+    <blockquote>Investing in existing rural health care facility buildings and infrastructure, including minor building alterations or renovations and equipment upgrades to ensure long-term overhead and upkeep costs are commensurate with patient volume, subject to restrictions in the funding policies and limitations.</blockquote>
+    <div class="cite">— CMS-RHT-26-001, Notice of Funding Opportunity (NOFO), §&quot;Use of funds&quot;, pp. 11–12</div>
+  </div>
+  
+  <div class="cms-cap">
+    <div class="label">CMS cap / restriction — verbatim</div>
+    <blockquote>Category J funding cannot exceed 20% of the total funding CMS awards States in a given budget period. [Separately: &quot;New construction is unallowable. Supplanting funding for in-process or planned construction projects or directing funding towards new construction builds is unallowable.&quot;]</blockquote>
+    <div class="cite" style="font-size:10px;color:#991b1b;margin-top:6px;font-style:italic">— CMS-RHT-26-001, NOFO, §&quot;Program-specific limitations / Unallowable costs&quot;, pp. 19–20</div>
+  </div>
+
+  <div class="plain"><strong>Plain English:</strong> Any hardware purchase or facility upgrade counts against J&#x27;s 20% cap. New construction is flatly prohibited. The good news: Cisco Capital offers an operating-lease structure (under 2 CFR 200.465) that treats Cisco hardware as rental cost — i.e., operating expense — which keeps the grant under J&#x27;s 20% cap. This is the &quot;CapEx to OpEx&quot; conversion every CFO should hear about.</div>
+
+  <h3>Cisco solutions that map here</h3>
+  <table class="sol-table">
+    <thead><tr><th>Solution</th><th>What it does in this category</th></tr></thead>
+    <tbody><tr><td>Cisco Capital operating lease</td><td>Converts CapEx to OpEx under 2 CFR 200.465</td></tr><tr><td>Structured as rental cost</td><td>Keeps the grant under J&#x27;s 20% cap, preserves budget for clinical categories</td></tr></tbody>
+  </table>
+
+  <div class="twocol">
+    <div class="box dont">
+      <h4>✗ DON'T SAY (IT framing)</h4>
+      <p>Hardware purchase. Equipment refresh. Capital expenditure. CapEx budget. New construction.</p>
+    </div>
+    <div class="box say">
+      <h4>✓ SAY INSTEAD (clinical framing)</h4>
+      <p>Operating lease under 2 CFR 200.465. Rental cost structure. OpEx-allowable infrastructure. Minor alteration supporting clinical program goals.</p>
+    </div>
+  </div>
+
+  <h3>Grant-ready budget narrative (paste-able)</h3>
+  <div class="lang">"Operating lease structured under 2 CFR 200.465 (rental costs are allowable as operating expense), keeping the grant under the 20% Category J cap and preserving grant capacity for clinical programs. Minor alterations or equipment upgrades clearly linked to program goals."</div>
+
+  <div class="persona"><strong>Who at the customer cares:</strong> CFO · Grant Manager · Chief Procurement Officer</div>
+</section>
+
+<section id="cat-K" class="cat" style="--accent:#0f766e">
+  <div class="head">
+    <h2>K — Fostering collaboration</h2>
+    <div class="budget-badge">No cap</div>
+  </div>
+
+  <div class="cms-block">
+    <div class="label"><span class="seal">CMS</span> Official NOFO text — verbatim</div>
+    <blockquote>Initiating, fostering, and strengthening local and regional strategic partnerships between rural facilities and other health care providers to promote quality improvement, improve financial stability of rural facilities, and expand access to care.</blockquote>
+    <div class="cite">— CMS-RHT-26-001, Notice of Funding Opportunity (NOFO), §&quot;Use of funds&quot;, pp. 11–12</div>
+  </div>
+  
+
+  <div class="plain"><strong>Plain English:</strong> NEW in this pass — this category was missing from the workbook. K is about partnerships: rural-to-academic, rural-to-rural, hub-and-spoke networks, regional collaboratives. Cisco&#x27;s collaboration stack is literally named &quot;collaboration&quot; — Webex Meetings, Contact Center, and persistent messaging are the glue that makes these multi-org partnerships actually work day-to-day.</div>
+
+  <h3>Cisco solutions that map here</h3>
+  <table class="sol-table">
+    <thead><tr><th>Solution</th><th>What it does in this category</th></tr></thead>
+    <tbody><tr><td>Webex Meetings / Video Endpoints</td><td>Persistent inter-org clinical meetings, case conferences, multi-site rounds</td></tr><tr><td>Webex Messaging</td><td>Cross-org clinical collaboration spaces — rural-to-academic, hub-and-spoke</td></tr><tr><td>Webex Contact Center</td><td>Shared intake, referral, and consultation workflows across partnership</td></tr><tr><td>Catalyst SD-WAN + Secure Access</td><td>Secure cross-org data exchange between partner facilities</td></tr></tbody>
+  </table>
+
+  <div class="twocol">
+    <div class="box dont">
+      <h4>✗ DON'T SAY (IT framing)</h4>
+      <p>Unified communications. Meeting platform. Messaging tool.</p>
+    </div>
+    <div class="box say">
+      <h4>✓ SAY INSTEAD (clinical framing)</h4>
+      <p>Strategic partnership collaboration backbone. Multi-facility clinical coordination platform. Rural-academic affiliation infrastructure.</p>
+    </div>
+  </div>
+
+  <h3>Grant-ready budget narrative (paste-able)</h3>
+  <div class="lang">"Clinical collaboration infrastructure enabling strategic partnerships between rural facilities and academic medical centers, regional health systems, and other providers — supporting quality improvement, financial stability, and access expansion through shared clinical workflows and coordinated care."</div>
+
+  <div class="persona"><strong>Who at the customer cares:</strong> CMO (rural-academic affiliations) · Chief Strategy Officer · Chief Collaboration/Partnership Officer · CFO (financial-stability partnerships)</div>
+</section>
+
+
+<section class="cat" style="--accent:#0f172a">
+  <h2>Caps and restrictions — quick reference</h2>
+  <table class="sol-table" style="margin-top:10px">
+    <thead><tr><th>Where</th><th>Restriction (verbatim where possible)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Category B</strong></td><td>Provider payments cannot exceed <strong>15%</strong> of total state award per budget period.</td></tr>
+      <tr><td><strong>Category J</strong></td><td>Capital expenditures cannot exceed <strong>20%</strong> of total state award per budget period. New construction is unallowable.</td></tr>
+      <tr><td><strong>Category F (narrow)</strong></td><td><strong>5%</strong> cap on EMR replacement, and only if a HITECH-certified EMR was already in place as of September 1, 2025. This is NOT a cap on all of F.</td></tr>
+      <tr><td><strong>Administrative expenses</strong></td><td>No more than <strong>10%</strong> of funds may be used for administrative expenses.</td></tr>
+      <tr><td><strong>Rural Tech Catalyst Fund-style initiatives</strong></td><td>Cannot exceed the lesser of <strong>10%</strong> of state award or <strong>$20M</strong> per budget period.</td></tr>
+    </tbody>
+  </table>
+  <div class="cite" style="font-size:11px;color:var(--muted);margin-top:10px;font-style:italic">Source: CMS-RHT-26-001, NOFO, §&quot;Program-specific limitations / Unallowable costs&quot;, pp. 19–20</div>
+</section>
+
+<nav class="topbar" style="margin-top:24px">
+  <div><a href="index.html">&larr; All States</a> &nbsp; <a href="accounts.html">GES Provider Dashboard</a></div>
+  <div>RHTP NOFO Category Reference</div>
+</nav>
+
+<footer>RHTP NOFO Category Reference · All verbatim text from CMS-RHT-26-001, Notice of Funding Opportunity (NOFO), §&quot;Use of funds&quot;, pp. 11–12 · Cisco internal reference for team members onboarding to RHTP</footer>
+</div></body></html>

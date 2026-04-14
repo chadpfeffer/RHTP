@@ -1,0 +1,387 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>RHTP Engage Now — Provider Account Briefs</title>
+<style>
+:root{--pri:#0b5cad;--pri2:#1e40af;--bg:#f8fafc;--card:#ffffff;--border:#e2e8f0;--text:#0f172a;--muted:#64748b;--ok:#10b981;--warn:#f59e0b;--err:#ef4444}
+*{box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);margin:0;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:24px}
+header.hero{background:linear-gradient(135deg,#0b5cad 0%,#1e40af 100%);color:#fff;padding:42px 40px;border-radius:14px;margin-bottom:24px;box-shadow:0 4px 16px rgba(11,92,173,.15)}
+header.hero h1{margin:0 0 8px 0;font-size:34px}
+header.hero .sub{opacity:.92;font-size:15px}
+header.hero .ges-label{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);padding:4px 14px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+header.hero .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+.kpi{background:rgba(255,255,255,.12);padding:12px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.2)}
+.kpi .v{font-size:22px;font-weight:700}
+.kpi .l{font-size:11px;text-transform:uppercase;letter-spacing:.5px;opacity:.85}
+nav.toc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:24px;font-size:13px;display:flex;flex-wrap:wrap;gap:10px}
+nav.toc a{color:var(--pri);text-decoration:none;padding:4px 10px;border:1px solid var(--border);border-radius:20px}
+nav.toc a:hover{background:var(--pri);color:#fff;border-color:var(--pri)}
+nav.topbar{display:flex;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 16px;margin-bottom:16px;font-size:13px}
+nav.topbar .left a,nav.topbar .right a{color:var(--pri);text-decoration:none;font-weight:600;padding:6px 12px;border-radius:6px}
+nav.topbar .left a:hover,nav.topbar .right a:hover{background:#eef2ff}
+nav.topbar .right{display:flex;gap:6px}
+section.step{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 26px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+section.step h2{margin:0 0 4px 0;font-size:20px;color:var(--pri2)}
+section.step .step-label{display:inline-block;background:var(--pri);color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:10px;letter-spacing:.5px;margin-bottom:10px}
+section.step .lead{color:var(--muted);font-size:13px;margin:0 0 14px 0}
+.state-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:12px}
+.state-card{border:1px solid var(--border);border-radius:10px;padding:14px;background:#fafbfc}
+.state-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.state-head h4{margin:0;font-size:15px}
+.state-meta{font-size:12px;color:var(--muted);margin-bottom:8px}
+.state-meta div{margin:2px 0}
+.state-init{font-size:12px;border-top:1px dashed var(--border);padding-top:8px;margin-top:8px}
+.badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:.4px}
+.badge-active{background:#fee2e2;color:#991b1b}
+.badge-opening{background:#fef3c7;color:#92400e}
+.badge-planning{background:#e2e8f0;color:#475569}
+.nofo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.nofo-card{border:1px solid var(--border);border-left:5px solid var(--accent);border-radius:10px;padding:14px 16px;background:#fff}
+.nofo-card h4{margin:0 0 4px 0;font-size:14px}
+.nofo-card .budget{display:inline-block;font-size:11px;background:#f1f5f9;color:#334155;padding:2px 8px;border-radius:10px;margin-bottom:8px}
+.nofo-card ul{margin:6px 0;padding-left:18px;font-size:12px}
+.nofo-card .dont{color:var(--err);font-size:11px;margin-top:6px}
+.nofo-card .say{color:var(--ok);font-size:12px;margin-top:4px}
+.nofo-card .persona{font-size:11px;color:var(--muted);margin-top:6px;font-style:italic}
+table{width:100%;border-collapse:collapse;font-size:13px}
+table th{background:#f1f5f9;text-align:left;padding:8px 10px;font-size:12px;text-transform:uppercase;letter-spacing:.3px;color:#475569;border-bottom:2px solid var(--border)}
+table td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+.rule{background:#fef3c7;border-left:4px solid var(--warn);padding:12px 16px;border-radius:6px;margin:10px 0;font-size:13px}
+.rule strong{color:#92400e}
+.ref-arch{border:2px dashed #cbd5e1;background:#f8fafc;border-radius:10px;padding:16px 18px;margin:10px 0}
+.ref-arch h4{margin:0 0 6px 0;color:var(--pri2)}
+.ref-arch .placeholder{font-size:11px;color:var(--err);background:#fee2e2;padding:2px 8px;border-radius:6px;display:inline-block;margin-left:8px;text-transform:uppercase;letter-spacing:.3px}
+.ref-arch .cats{font-size:11px;color:var(--muted);margin-top:6px}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.contact-card{border:1px solid var(--border);border-radius:8px;padding:12px 14px;background:#fafbfc;font-size:13px}
+.contact-card .name{font-weight:700;color:var(--pri2)}
+.contact-card .role{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.3px}
+.contact-status{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.status-yes{background:var(--ok)}
+.status-partial{background:var(--warn)}
+.status-no{background:var(--muted)}
+.muted{color:var(--muted)}
+.callout{background:#eef2ff;border-left:4px solid var(--pri);padding:12px 16px;border-radius:6px;margin:10px 0;font-size:13px}
+footer{text-align:center;color:var(--muted);font-size:11px;margin:30px 0 10px 0}
+@media(max-width:720px){.twocol{grid-template-columns:1fr}header.hero .kpis{grid-template-columns:repeat(2,1fr)}}
+
+.cat{display:inline-block;font-size:10px;font-weight:700;width:20px;height:20px;line-height:20px;text-align:center;border-radius:4px;color:#fff;margin-right:2px}
+.cat-G{background:#10b981}.cat-H{background:#f59e0b}.cat-E{background:#0ea5e9}
+.cat-A{background:#7c3aed}.cat-I{background:#ec4899}.cat-C{background:#06b6d4}
+.cat-D{background:#64748b}.cat-F{background:#ef4444}.cat-K{background:#6366f1}
+table a{color:var(--pri);text-decoration:none}table a:hover{text-decoration:underline}
+</style></head><body>
+<div class="wrap">
+<nav class="topbar">
+  <div class="left"><a href="index.html">&larr; All States</a></div>
+  <div class="right">
+    <a href="nofo-categories.html">📖 NOFO Reference</a>
+  </div>
+</nav>
+<header class="hero">
+  <div class="ges-label">Cisco Global Enterprise Sales</div>
+  <h1>GES RHTP Provider Dashboard</h1>
+  <div class="sub">83 GES provider accounts · 27 Engage Now priority briefs · 9-step account-team workflow</div>
+  <div class="sub" style="margin-top:4px">States → initiatives → Cisco contribution → reference architecture → current/future state → who to call → RFP response</div>
+  <div class="kpis">
+    <div class="kpi"><div class="v">27</div><div class="l">Provider Briefs</div></div>
+    <div class="kpi"><div class="v">47</div><div class="l">Total Active RFP Touches</div></div>
+    <div class="kpi"><div class="v">27</div><div class="l">With Named Contacts</div></div>
+    <div class="kpi"><div class="v">27/27</div><div class="l">Providers Filtered</div></div>
+  </div>
+</header>
+
+<div class="rule"><strong>How to use:</strong> Click any account name to open its self-contained brief. Each brief is a single HTML page that walks you through the 9-step workflow. Share the file with your extended team — no login, no dependencies.</div>
+
+<section class="step">
+  <h2>All 27 Engage Now Provider Accounts</h2>
+  <p class="lead">Sorted by priority score. <strong>Cats</strong> = NOFO categories active in this account's footprint. <strong>Contacts</strong> = named individuals researched (from Contact Intel tab).</p>
+  <table>
+    <thead><tr>
+      <th>Account</th><th>HQ</th><th style="text-align:center">Score</th>
+      <th style="text-align:center">RHTP States</th><th style="text-align:center">Active RFPs</th>
+      <th style="text-align:center">Opening</th><th>NOFO Categories</th><th style="text-align:center">Contacts</th>
+    </tr></thead>
+    <tbody><tr>
+      <td><a href="universal-health-services.html"><strong>Universal Health Services</strong></a></td>
+      <td>Pennsylvania</td>
+      <td style="text-align:center">38</td>
+      <td style="text-align:center">37</td>
+      <td style="text-align:center">8</td>
+      <td style="text-align:center">7</td>
+      <td><span class="cat cat-E">E</span> <span class="cat cat-F">F</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="commonspirit-health.html"><strong>Commonspirit Health</strong></a></td>
+      <td>Arizona</td>
+      <td style="text-align:center">26</td>
+      <td style="text-align:center">22</td>
+      <td style="text-align:center">4</td>
+      <td style="text-align:center">7</td>
+      <td><span class="cat cat-E">E</span> <span class="cat cat-F">F</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="trinity-health.html"><strong>Trinity Health</strong></a></td>
+      <td>Michigan</td>
+      <td style="text-align:center">24</td>
+      <td style="text-align:center">21</td>
+      <td style="text-align:center">6</td>
+      <td style="text-align:center">3</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-E">E</span> <span class="cat cat-F">F</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="ascension-health.html"><strong>Ascension Health</strong></a></td>
+      <td>Missouri</td>
+      <td style="text-align:center">21</td>
+      <td style="text-align:center">25</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">6</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-E">E</span> <span class="cat cat-F">F</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="sanford-health.html"><strong>Sanford Health</strong></a></td>
+      <td>South Dakota</td>
+      <td style="text-align:center">13</td>
+      <td style="text-align:center">6</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">2</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-D">D</span> <span class="cat cat-E">E</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="providence.html"><strong>Providence</strong></a></td>
+      <td>Washington</td>
+      <td style="text-align:center">10</td>
+      <td style="text-align:center">7</td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:center">2</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-D">D</span> <span class="cat cat-E">E</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="adventhealth.html"><strong>Adventhealth</strong></a></td>
+      <td>Florida</td>
+      <td style="text-align:center">9</td>
+      <td style="text-align:center">9</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">3</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-C">C</span> <span class="cat cat-E">E</span> <span class="cat cat-F">F</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="mayo-clinic.html"><strong>Mayo Clinic</strong></a></td>
+      <td>Minnesota</td>
+      <td style="text-align:center">9</td>
+      <td style="text-align:center">5</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">3</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-E">E</span> <span class="cat cat-F">F</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="banner.html"><strong>Banner</strong></a></td>
+      <td>Arizona</td>
+      <td style="text-align:center">7</td>
+      <td style="text-align:center">6</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">2</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-C">C</span> <span class="cat cat-D">D</span> <span class="cat cat-E">E</span> <span class="cat cat-G">G</span> <span class="cat cat-I">I</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="northwell-health.html"><strong>Northwell Health</strong></a></td>
+      <td>New York</td>
+      <td style="text-align:center">7</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">2</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-E">E</span> <span class="cat cat-F">F</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="ardent-health-svcs.html"><strong>Ardent Health Svcs</strong></a></td>
+      <td>Tennessee</td>
+      <td style="text-align:center">5</td>
+      <td style="text-align:center">6</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-E">E</span> <span class="cat cat-F">F</span> <span class="cat cat-I">I</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="advocate-health.html"><strong>Advocate Health</strong></a></td>
+      <td>North Carolina</td>
+      <td style="text-align:center">5</td>
+      <td style="text-align:center">6</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-E">E</span> <span class="cat cat-F">F</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="baptist-healthcare-system.html"><strong>Baptist Healthcare System</strong></a></td>
+      <td>Kentucky</td>
+      <td style="text-align:center">5</td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-C">C</span> <span class="cat cat-F">F</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="bon-secours-mercy-health.html"><strong>Bon Secours Mercy Health</strong></a></td>
+      <td>Ohio</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">7</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-E">E</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="cleveland-clinic-l6.html"><strong>Cleveland Clinic L6</strong></a></td>
+      <td>Ohio</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-E">E</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="univ-of-vermont-health-network.html"><strong>Univ Of Vermont Health Network</strong></a></td>
+      <td>Vermont</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td><span class="cat cat-E">E</span> <span class="cat cat-F">F</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="childrens-hospital-medical-center-cinc.html"><strong>Childrens Hospital Medical Center Cinc</strong></a></td>
+      <td>Ohio</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-E">E</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="ohio-health.html"><strong>Ohio Health</strong></a></td>
+      <td>Ohio</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-E">E</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="osu-medical-center.html"><strong>Osu Medical Center</strong></a></td>
+      <td>Ohio</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-E">E</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="promedica-health-systems-inc.html"><strong>Promedica Health Systems Inc</strong></a></td>
+      <td>Ohio</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-E">E</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="rwj-barnabas-health.html"><strong>Rwj Barnabas Health</strong></a></td>
+      <td>New Jersey</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-E">E</span> <span class="cat cat-F">F</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="st-lukes-hospital.html"><strong>St Lukes Hospital</strong></a></td>
+      <td>New Jersey</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-E">E</span> <span class="cat cat-F">F</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="university-hospitals.html"><strong>University Hospitals</strong></a></td>
+      <td>Ohio</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td><span class="cat cat-A">A</span> <span class="cat cat-E">E</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="community-health-network.html"><strong>Community Health Network</strong></a></td>
+      <td>Indiana</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td><span class="cat cat-F">F</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="iu-health.html"><strong>Iu Health</strong></a></td>
+      <td>Indiana</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td><span class="cat cat-F">F</span> <span class="cat cat-G">G</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="childrens-hc-of-atl.html"><strong>Childrens Hc Of Atl</strong></a></td>
+      <td>Georgia</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td><span class="cat cat-E">E</span> <span class="cat cat-G">G</span> <span class="cat cat-I">I</span></td>
+      <td style="text-align:center">✓</td>
+    </tr><tr>
+      <td><a href="piedmont-healthcare.html"><strong>Piedmont Healthcare</strong></a></td>
+      <td>Georgia</td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">1</td>
+      <td><span class="cat cat-E">E</span> <span class="cat cat-G">G</span> <span class="cat cat-I">I</span></td>
+      <td style="text-align:center">✓</td>
+    </tr></tbody>
+  </table>
+</section>
+
+<section class="step">
+  <h2>Reference architecture template priority</h2>
+  <p class="lead">These templates are the starting structure for every brief. Priority order is based on the NOFO category combinations that appear across the 27 Engage Now providers — your team should build these in order.</p>
+  <div class="ref-arch">
+    <h4>#1 Rural Care Backbone + Workforce (G+E) <span class="placeholder">Template — Your team to build</span></h4>
+    <div>SD-WAN spine connecting rural sites → Webex Meetings/Endpoints for specialist consults & CME → Meraki for clinical site connectivity → Secure Access for clinician BYOD.</div>
+    <div class="cats">Universal — applies to nearly all 27 accounts. Build this one first.</div>
+  </div>
+  <div class="ref-arch">
+    <h4>#2 Population Health Analytics (A) <span class="placeholder">Template — Your team to build</span></h4>
+    <div>Splunk ingestion of claims + EHR + SDOH data → dashboards for chronic disease cohorts → Webex Contact Center AI for proactive outreach.</div>
+    <div class="cats">Applies to 20 of 27 accounts (Prevention is the 2nd most common category).</div>
+  </div>
+  <div class="ref-arch">
+    <h4>#3 Clinical AI at the Edge (I) <span class="placeholder">Template — Your team to build</span></h4>
+    <div>UCS/Unified Edge at rural hospitals → local model inference (ambient docs, imaging triage) → SD-WAN back to central data plane.</div>
+    <div class="cats">Applies to 4 of 27 accounts but highest differentiation vs competitors.</div>
+  </div>
+  <div class="ref-arch">
+    <h4>#4 Tele-Behavioral Health (H) <span class="placeholder">Template — Your team to build</span></h4>
+    <div>Webex Instant Connect for on-demand telepsych → Contact Center for crisis line → Meraki at clinic / ED / school sites.</div>
+    <div class="cats">Rare in Engage Now providers but 15-20% budget category — high leverage when present.</div>
+  </div>
+  <div class="ref-arch">
+    <h4>#5 Digital Front Door (C) <span class="placeholder">Template — Your team to build</span></h4>
+    <div>Webex Contact Center + AI Agents → patient self-scheduling, triage, navigation → ThousandEyes monitoring the patient experience.</div>
+    <div class="cats">Applies to 3 of 27 accounts.</div>
+  </div>
+  <div class="ref-arch">
+    <h4>#6 Security + Cisco Capital (cross-cutting) <span class="placeholder">Template — Your team to build</span></h4>
+    <div>XDR, ISE, Firewall, Secure Access protecting the entire RHTP investment → Cisco Capital operating lease to convert CapEx into allowable OpEx under 2 CFR 200.465.</div>
+    <div class="cats">Appears in every brief — wraps all the above.</div>
+  </div>
+</section>
+
+<footer>RHTP Provider Brief Index · Generated from RHTP Account & Solution Briefing v2.0.xlsx · Cisco internal</footer>
+</div></body></html>

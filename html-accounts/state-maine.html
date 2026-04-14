@@ -1,0 +1,437 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Maine — RHTP GES State Detail</title>
+<style>
+:root{--pri:#0b5cad;--pri2:#1e40af;--bg:#f8fafc;--card:#ffffff;--border:#e2e8f0;--text:#0f172a;--muted:#64748b;--ok:#10b981;--warn:#f59e0b;--err:#ef4444}
+*{box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);margin:0;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:24px}
+header.hero{background:linear-gradient(135deg,#0b5cad 0%,#1e40af 100%);color:#fff;padding:42px 40px;border-radius:14px;margin-bottom:24px;box-shadow:0 4px 16px rgba(11,92,173,.15)}
+header.hero h1{margin:0 0 6px 0;font-size:28px}
+header.hero .sub{opacity:.92;font-size:14px}
+header.hero .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+.kpi{background:rgba(255,255,255,.12);padding:12px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.2)}
+.kpi .v{font-size:22px;font-weight:700}
+.kpi .l{font-size:11px;text-transform:uppercase;letter-spacing:.5px;opacity:.85}
+nav.topbar{display:flex;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 16px;margin-bottom:16px;font-size:13px}
+nav.topbar .left a,nav.topbar .right a{color:var(--pri);text-decoration:none;font-weight:600;padding:6px 12px;border-radius:6px}
+nav.topbar .left a:hover,nav.topbar .right a:hover{background:#eef2ff}
+nav.topbar .right{display:flex;gap:6px}
+nav.toc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:24px;font-size:13px;display:flex;flex-wrap:wrap;gap:10px}
+nav.toc a{color:var(--pri);text-decoration:none;padding:4px 10px;border:1px solid var(--border);border-radius:20px}
+nav.toc a:hover{background:var(--pri);color:#fff;border-color:var(--pri)}
+section.step{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 26px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+section.step h2{margin:0 0 4px 0;font-size:20px;color:var(--pri2)}
+section.step .step-label{display:inline-block;background:var(--pri);color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:10px;letter-spacing:.5px;margin-bottom:10px}
+section.step .lead{color:var(--muted);font-size:13px;margin:0 0 14px 0}
+.rfp-card{border:1px solid var(--border);border-left:5px solid var(--err);border-radius:10px;padding:18px 20px;margin-bottom:16px;background:#fffbfb}
+.rfp-card h3{margin:0 0 6px 0;color:var(--pri2);font-size:17px}
+.rfp-card .rfp-id{display:inline-block;background:#fee2e2;color:#991b1b;font-size:11px;font-weight:700;padding:3px 9px;border-radius:10px;letter-spacing:.4px;margin-right:8px}
+.rfp-card .dl-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:10px;letter-spacing:.4px}
+.rfp-card .dl-badge.issued{background:#fee2e2;color:#991b1b}
+.rfp-card .dl-badge.anticipated{background:#fef3c7;color:#92400e}
+.rfp-meta{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;font-size:12px;margin:10px 0;padding:10px;background:#fafbfc;border-radius:6px}
+.rfp-meta div strong{color:var(--muted);text-transform:uppercase;font-size:10px;letter-spacing:.3px;display:block}
+.rfp-scope{font-size:13px;margin:10px 0}
+.rfp-cisco{background:#eef2ff;border-left:4px solid var(--pri);padding:10px 14px;border-radius:6px;font-size:13px;margin:10px 0}
+.rfp-cisco strong{color:var(--pri2)}
+.rfp-cats{margin:8px 0}
+.init-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.init-table th{background:#f1f5f9;text-align:left;padding:8px 10px;font-size:11px;text-transform:uppercase;letter-spacing:.3px;color:#475569;border-bottom:2px solid var(--border)}
+.init-table td{padding:10px;border-bottom:1px solid var(--border);vertical-align:top;font-size:12px}
+.init-table td.num{font-weight:700;color:var(--pri);width:28px}
+.init-table td.funding{white-space:nowrap;color:#065f46;font-weight:700}
+.init-table td.status{font-size:11px}
+.init-table td.status.active{color:var(--err);font-weight:700}
+.init-table tr.active-row{background:#fef9f9}
+.cat{display:inline-block;font-size:10px;font-weight:700;width:20px;height:20px;line-height:20px;text-align:center;border-radius:4px;color:#fff;margin-right:2px}
+.gap-card{border:1px solid var(--border);border-left:4px solid var(--warn);border-radius:8px;padding:12px 16px;margin:8px 0;background:#fffbeb}
+.gap-card .gap-name{font-weight:700;color:#92400e;font-size:14px}
+.gap-card .gap-note{font-size:12px;color:var(--muted);margin-top:4px}
+.ges-card{border:1px solid var(--border);border-left:4px solid var(--ok);border-radius:8px;padding:12px 16px;margin:8px 0;background:#f0fdf4}
+.ges-card .ges-name{font-weight:700;color:#166534;font-size:14px}
+.ges-card .ges-note{font-size:12px;color:var(--muted);margin-top:4px}
+.motion-tag{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:10px;letter-spacing:.4px;margin-right:6px;text-transform:uppercase}
+.motion-prime{background:#dcfce7;color:#166534}
+.motion-sub{background:#e0e7ff;color:#3730a3}
+.motion-sell{background:#fef3c7;color:#92400e}
+.model-banner{display:inline-block;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:700;letter-spacing:.3px;margin-bottom:6px}
+.model-vendor{background:#e0e7ff;color:#3730a3;border:1px solid #c7d2fe}
+.model-hospital{background:#dcfce7;color:#166534;border:1px solid #bbf7d0}
+.callout{background:#eef2ff;border-left:4px solid var(--pri);padding:12px 16px;border-radius:6px;margin:10px 0;font-size:13px}
+.rule{background:#fef3c7;border-left:4px solid var(--warn);padding:12px 16px;border-radius:6px;margin:10px 0;font-size:13px}
+.rule strong{color:#92400e}
+footer{text-align:center;color:var(--muted);font-size:11px;margin:30px 0 10px 0}
+a.srclink{color:var(--pri);text-decoration:none;font-size:12px;font-weight:600;padding:4px 10px;background:#eef2ff;border-radius:6px;margin-right:6px;display:inline-block;margin-top:4px}
+a.srclink:hover{background:var(--pri);color:#fff}
+</style></head><body>
+<div class="wrap">
+
+<nav class="topbar">
+  <div class="left"><a href="index.html">&larr; All States</a></div>
+  <div class="right">
+    <a href="accounts.html">GES Provider Dashboard</a>
+    <a href="nofo-categories.html">📖 NOFO Reference</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="sub">Cisco GES · RHTP State Detail</div>
+  <h1>Maine — ACTIVE - 11+ RFPs planned or in execution</h1>
+  <div class="sub">Maine Department of Health and Human Services (DHHS) / Office of MaineCare Services</div>
+  <div class="kpis">
+    <div class="kpi"><div class="v">$100.0M (minimum allocation)</div><div class="l">Year 1 Award</div></div>
+    <div class="kpi"><div class="v">$0.5B (minimum, some states receive >$1B)</div><div class="l">5-Year Total</div></div>
+    <div class="kpi"><div class="v">5</div><div class="l">Initiatives</div></div>
+    <div class="kpi"><div class="v">0/11</div><div class="l">Issued / Total RFPs</div></div>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#at-a-glance">At a glance</a>
+  <a href="#active-rfps">Active RFPs (11)</a>
+  <a href="#initiatives">Initiatives (5)</a>
+  <a href="#ges-footprint">GES footprint</a>
+  <a href="#categories">NOFO categories</a>
+  <a href="#sources">Source documents</a>
+</nav>
+
+<section class="step" id="at-a-glance">
+  <span class="step-label">At a glance</span>
+  <h2>What account teams need to know</h2>
+  <div style="margin-bottom:10px">
+    <span class="model-banner" style="background:#fef3c7;color:#92400e;border:1px solid #fde68a">MIXED MODEL — Some RFPs vendor-procured, some direct-to-provider</span>
+  </div>
+  <div class="callout">
+    <strong>Procurement model:</strong> State-managed subgrants via RFPs/RFAs for 5 coordinated initiatives; emphasis on regional provider collaboration; external evaluator oversight; subaward process with defined eligibility; Maine uses existing Hospital Value-Based Payment model as foundation for sustainability
+  </div>
+  <div style="margin:10px 0;font-size:12px">
+    <strong>Cisco sales motions:</strong>
+    <span class="motion-tag motion-prime">PRIME ELIGIBLE</span> Cisco bids directly
+    <span class="motion-tag motion-sub">SUBCONTRACTOR PLAY</span> Cisco partners with winning vendor
+    <span class="motion-tag motion-sell">SELL TO PROVIDER</span> Provider buys from Cisco
+  </div>
+  <div class="rule">
+    <strong>⚠ No GES named accounts:</strong> None of the 96 Cisco Global Enterprise Sales accounts are HQ'd in Maine. Major health systems here may be served by Cisco Commercial or SLED teams. See <a href="#ges-footprint">GES footprint</a>.
+  </div>
+  <p style="font-size:13px"><strong>Geography:</strong> 51% of 1.36M population (690K+) in rural areas; 12 of 16 counties fully rural; frontier and remote (FAR) areas emphasis</p>
+  <p style="font-size:13px"><strong>Portal:</strong> DHHS website for RFP releases (specific URLs to be announced)</p>
+</section>
+
+<section class="step" id="active-rfps">
+  <span class="step-label">Live opportunities</span>
+  <h2>RFPs (11)</h2>
+  <p class="lead">0 issued with due dates · 11 anticipated from state planning documents</p>
+
+  <div class="rfp-card">
+    <div>
+      <span class="rfp-id">RHTP-ME-001</span>
+      <span class="dl-badge anticipated">ANTICIPATED</span>
+      <span class="motion-tag motion-sub">SUBCONTRACTOR PLAY</span>
+    </div>
+    <h3>Mobile Health Units Procurement</h3>
+    <div class="rfp-cats"><span class="cat" style="background:#7c3aed">A</span> <span style="font-size:11px;color:var(--muted)">· funding est. $30.7M (from Initiative 1 budget)</span></div>
+    <div class="rfp-meta">
+      <div><strong>Issued</strong>2026</div>
+      <div><strong>Proposals due</strong>TBD</div>
+      <div><strong>Award notification</strong>TBD</div>
+      <div><strong>Funding est.</strong>$30.7M (from Initiative 1 budget)</div>
+    </div>
+    <div class="rfp-scope"><strong>Scope:</strong> RFP for contracting mobile units for community paramedicine and alternative sites of care. Contractor manages RHTP funding to purchase and outfit units per changing community needs.</div>
+    <div class="rfp-cisco"><strong>Cisco angle:</strong> Mobile clinical infrastructure, remote connectivity, monitoring systems</div>
+    <div><a class="srclink" href="../RFP Downloads/Maine/V2_SoM_RHTP_Project Narrative_11Dec25_CMS Response ADDED.pdf">📄 View source document</a></div>
+  </div>
+
+  <div class="rfp-card">
+    <div>
+      <span class="rfp-id">RHTP-ME-002</span>
+      <span class="dl-badge anticipated">ANTICIPATED</span>
+      <span class="motion-tag motion-sell">SELL TO PROVIDER</span>
+    </div>
+    <h3>Nutrition Education Program RFP/Contracting</h3>
+    <div class="rfp-cats"><span class="cat" style="background:#7c3aed">A</span> <span style="font-size:11px;color:var(--muted)">· funding est. $26.0M (Initiative 1)</span></div>
+    <div class="rfp-meta">
+      <div><strong>Issued</strong>2026</div>
+      <div><strong>Proposals due</strong>TBD</div>
+      <div><strong>Award notification</strong>TBD</div>
+      <div><strong>Funding est.</strong>$26.0M (Initiative 1)</div>
+    </div>
+    <div class="rfp-scope"><strong>Scope:</strong> RFP/contracting to launch nutrition education programming statewide as part of Initiative 1 (Population Health).</div>
+    <div class="rfp-cisco"><strong>Cisco angle:</strong> Health education platforms, data tracking</div>
+    <div><a class="srclink" href="../RFP Downloads/Maine/V2_SoM_RHTP_Project Narrative_11Dec25_CMS Response ADDED.pdf">📄 View source document</a></div>
+  </div>
+
+  <div class="rfp-card">
+    <div>
+      <span class="rfp-id">RHTP-ME-003</span>
+      <span class="dl-badge anticipated">ANTICIPATED</span>
+      <span class="motion-tag motion-sub">SUBCONTRACTOR PLAY</span>
+    </div>
+    <h3>Community Paramedicine Training Center RFP</h3>
+    <div class="rfp-cats"><span class="cat" style="background:#7c3aed">A</span> <span style="font-size:11px;color:var(--muted)">· funding est. TBD (Initiative 1)</span></div>
+    <div class="rfp-meta">
+      <div><strong>Issued</strong>2026</div>
+      <div><strong>Proposals due</strong>TBD</div>
+      <div><strong>Award notification</strong>TBD</div>
+      <div><strong>Funding est.</strong>TBD (Initiative 1)</div>
+    </div>
+    <div class="rfp-scope"><strong>Scope:</strong> RFP/contracting to establish community paramedicine training center; hire staff; deliver CP programming in all counties.</div>
+    <div class="rfp-cisco"><strong>Cisco angle:</strong> Training infrastructure, e-learning systems</div>
+    <div><a class="srclink" href="../RFP Downloads/Maine/V2_SoM_RHTP_Project Narrative_11Dec25_CMS Response ADDED.pdf">📄 View source document</a></div>
+  </div>
+
+  <div class="rfp-card">
+    <div>
+      <span class="rfp-id">RHTP-ME-004</span>
+      <span class="dl-badge anticipated">ANTICIPATED</span>
+      <span class="motion-tag motion-sell">SELL TO PROVIDER</span>
+    </div>
+    <h3>Community Health Worker Programs RFP</h3>
+    <div class="rfp-cats"><span class="cat" style="background:#7c3aed">A</span> <span style="font-size:11px;color:var(--muted)">· funding est. $52.5M (Initiative 1)</span></div>
+    <div class="rfp-meta">
+      <div><strong>Issued</strong>2026</div>
+      <div><strong>Proposals due</strong>TBD</div>
+      <div><strong>Award notification</strong>TBD</div>
+      <div><strong>Funding est.</strong>$52.5M (Initiative 1)</div>
+    </div>
+    <div class="rfp-scope"><strong>Scope:</strong> Hire CHW/Peer staff; RFP/contracting for CHW training and peer programs. Initiative 1 ongoing funding and TA.</div>
+    <div class="rfp-cisco"><strong>Cisco angle:</strong> Workforce management, care coordination IT</div>
+    <div><a class="srclink" href="../RFP Downloads/Maine/V2_SoM_RHTP_Project Narrative_11Dec25_CMS Response ADDED.pdf">📄 View source document</a></div>
+  </div>
+
+  <div class="rfp-card">
+    <div>
+      <span class="rfp-id">RHTP-ME-005</span>
+      <span class="dl-badge anticipated">ANTICIPATED</span>
+      <span class="motion-tag motion-prime">PRIME ELIGIBLE</span>
+    </div>
+    <h3>Maine Rural Health HIE Subaward & RFA</h3>
+    <div class="rfp-cats"><span class="cat" style="background:#7c3aed">A</span> <span style="font-size:11px;color:var(--muted)">· funding est. TBD (Initiative 3 Tech)</span></div>
+    <div class="rfp-meta">
+      <div><strong>Issued</strong>2026</div>
+      <div><strong>Proposals due</strong>TBD</div>
+      <div><strong>Award notification</strong>TBD</div>
+      <div><strong>Funding est.</strong>TBD (Initiative 3 Tech)</div>
+    </div>
+    <div class="rfp-scope"><strong>Scope:</strong> Establish subaward mechanism; develop criteria and issue RFA for HIE expansion (shared services). Strengthens statewide health information exchange.</div>
+    <div class="rfp-cisco"><strong>Cisco angle:</strong> Health information exchange infrastructure, data interoperability</div>
+    <div><a class="srclink" href="../RFP Downloads/Maine/V2_SoM_RHTP_Project Narrative_11Dec25_CMS Response ADDED.pdf">📄 View source document</a></div>
+  </div>
+
+  <div class="rfp-card">
+    <div>
+      <span class="rfp-id">RHTP-ME-006</span>
+      <span class="dl-badge anticipated">ANTICIPATED</span>
+      <span class="motion-tag motion-prime">PRIME ELIGIBLE</span>
+    </div>
+    <h3>Expanded Telehealth Services RFP</h3>
+    <div class="rfp-cats"><span class="cat" style="background:#7c3aed">A</span> <span style="font-size:11px;color:var(--muted)">· funding est. $45.8M (Initiative 3)</span></div>
+    <div class="rfp-meta">
+      <div><strong>Issued</strong>2026</div>
+      <div><strong>Proposals due</strong>TBD</div>
+      <div><strong>Award notification</strong>TBD</div>
+      <div><strong>Funding est.</strong>$45.8M (Initiative 3)</div>
+    </div>
+    <div class="rfp-scope"><strong>Scope:</strong> Issue RFP to procure contracts for telehealth program development. Expand behavioral health tele-BH, specialty consultations, primary care via telehealth.</div>
+    <div class="rfp-cisco"><strong>Cisco angle:</strong> Telehealth platforms, remote patient monitoring, virtual care infrastructure</div>
+    <div><a class="srclink" href="../RFP Downloads/Maine/V2_SoM_RHTP_Project Narrative_11Dec25_CMS Response ADDED.pdf">📄 View source document</a></div>
+  </div>
+
+  <div class="rfp-card">
+    <div>
+      <span class="rfp-id">RHTP-ME-007</span>
+      <span class="dl-badge anticipated">ANTICIPATED</span>
+      <span class="motion-tag motion-prime">PRIME ELIGIBLE</span>
+    </div>
+    <h3>EMR Systems Expansion & Utility RFP</h3>
+    <div class="rfp-cats"><span class="cat" style="background:#7c3aed">A</span> <span style="font-size:11px;color:var(--muted)">· funding est. $121.8M (Initiative 3)</span></div>
+    <div class="rfp-meta">
+      <div><strong>Issued</strong>2026</div>
+      <div><strong>Proposals due</strong>TBD</div>
+      <div><strong>Award notification</strong>TBD</div>
+      <div><strong>Funding est.</strong>$121.8M (Initiative 3)</div>
+    </div>
+    <div class="rfp-scope"><strong>Scope:</strong> RFP to expand utility, functionality, and security of EMR systems across rural practices. Data integration and healthcare data exchange support.</div>
+    <div class="rfp-cisco"><strong>Cisco angle:</strong> EMR platforms, cloud infrastructure, data security, interoperability standards</div>
+    <div><a class="srclink" href="../RFP Downloads/Maine/V2_SoM_RHTP_Project Narrative_11Dec25_CMS Response ADDED.pdf">📄 View source document</a></div>
+  </div>
+
+  <div class="rfp-card">
+    <div>
+      <span class="rfp-id">RHTP-ME-008</span>
+      <span class="dl-badge anticipated">ANTICIPATED</span>
+      <span class="motion-tag motion-prime">PRIME ELIGIBLE</span>
+    </div>
+    <h3>Rural AI Hub & AI Innovation Institute RFP</h3>
+    <div class="rfp-cats"><span class="cat" style="background:#7c3aed">A</span> <span style="font-size:11px;color:var(--muted)">· funding est. $2.5M (Initiative 3)</span></div>
+    <div class="rfp-meta">
+      <div><strong>Issued</strong>2026</div>
+      <div><strong>Proposals due</strong>TBD</div>
+      <div><strong>Award notification</strong>TBD</div>
+      <div><strong>Funding est.</strong>$2.5M (Initiative 3)</div>
+    </div>
+    <div class="rfp-scope"><strong>Scope:</strong> Create Maine Rural AI Hub and Rural Health AI Innovation Institute. Support AI tool adoption in rural practices.</div>
+    <div class="rfp-cisco"><strong>Cisco angle:</strong> AI/ML platforms, analytics, clinical decision support</div>
+    <div><a class="srclink" href="../RFP Downloads/Maine/V2_SoM_RHTP_Project Narrative_11Dec25_CMS Response ADDED.pdf">📄 View source document</a></div>
+  </div>
+
+  <div class="rfp-card">
+    <div>
+      <span class="rfp-id">RHTP-ME-009</span>
+      <span class="dl-badge anticipated">ANTICIPATED</span>
+      <span class="motion-tag motion-sub">SUBCONTRACTOR PLAY</span>
+    </div>
+    <h3>Regional Provider Convenings & Learning RFP</h3>
+    <div class="rfp-cats"><span class="cat" style="background:#7c3aed">A</span> <span style="font-size:11px;color:var(--muted)">· funding est. TBD</span></div>
+    <div class="rfp-meta">
+      <div><strong>Issued</strong>2026</div>
+      <div><strong>Proposals due</strong>TBD</div>
+      <div><strong>Award notification</strong>TBD</div>
+      <div><strong>Funding est.</strong>TBD</div>
+    </div>
+    <div class="rfp-scope"><strong>Scope:</strong> RFP for convening regional rural providers to support implementation and change management. Collaborative learning and best practice sharing.</div>
+    <div class="rfp-cisco"><strong>Cisco angle:</strong> Collaboration platforms, knowledge management</div>
+    <div><a class="srclink" href="../RFP Downloads/Maine/V2_SoM_RHTP_Project Narrative_11Dec25_CMS Response ADDED.pdf">📄 View source document</a></div>
+  </div>
+
+  <div class="rfp-card">
+    <div>
+      <span class="rfp-id">RHTP-ME-010</span>
+      <span class="dl-badge anticipated">ANTICIPATED</span>
+      <span class="motion-tag motion-sub">SUBCONTRACTOR PLAY</span>
+    </div>
+    <h3>Patient Transport System RFP</h3>
+    <div class="rfp-cats"><span class="cat" style="background:#7c3aed">A</span> <span style="font-size:11px;color:var(--muted)">· funding est. $5.1M (Initiative 5)</span></div>
+    <div class="rfp-meta">
+      <div><strong>Issued</strong>2026</div>
+      <div><strong>Proposals due</strong>TBD</div>
+      <div><strong>Award notification</strong>TBD</div>
+      <div><strong>Funding est.</strong>$5.1M (Initiative 5)</div>
+    </div>
+    <div class="rfp-scope"><strong>Scope:</strong> RFP to expand inter-facility patient transport system. RHTP funding supports expansion with sole-source vendor option. Operational & capital costs.</div>
+    <div class="rfp-cisco"><strong>Cisco angle:</strong> Logistics/routing software, tracking systems</div>
+    <div><a class="srclink" href="../RFP Downloads/Maine/V2_SoM_RHTP_Project Narrative_11Dec25_CMS Response ADDED.pdf">📄 View source document</a></div>
+  </div>
+
+  <div class="rfp-card">
+    <div>
+      <span class="rfp-id">RHTP-ME-011</span>
+      <span class="dl-badge anticipated">ANTICIPATED</span>
+      <span class="motion-tag motion-prime">PRIME ELIGIBLE</span>
+    </div>
+    <h3>Remote Patient Monitoring Program RFP</h3>
+    <div class="rfp-cats"><span class="cat" style="background:#7c3aed">A</span> <span style="font-size:11px;color:var(--muted)">· funding est. $7.0M (Initiative 3)</span></div>
+    <div class="rfp-meta">
+      <div><strong>Issued</strong>2026</div>
+      <div><strong>Proposals due</strong>TBD</div>
+      <div><strong>Award notification</strong>TBD</div>
+      <div><strong>Funding est.</strong>$7.0M (Initiative 3)</div>
+    </div>
+    <div class="rfp-scope"><strong>Scope:</strong> Issue RFP/secure contract to launch remote monitoring program for chronic disease management and predictive analytics.</div>
+    <div class="rfp-cisco"><strong>Cisco angle:</strong> Remote monitoring platforms, IoT devices, analytics</div>
+    <div><a class="srclink" href="../RFP Downloads/Maine/V2_SoM_RHTP_Project Narrative_11Dec25_CMS Response ADDED.pdf">📄 View source document</a></div>
+  </div>
+</section>
+
+<section class="step" id="initiatives">
+  <span class="step-label">Full state plan</span>
+  <h2>Initiatives (5)</h2>
+  <table class="init-table">
+    <thead><tr><th>#</th><th>Initiative</th><th>Funding</th><th>NOFO cats</th><th>Cisco motion</th><th>Cisco angle</th><th>RFP status</th></tr></thead>
+    <tbody>
+<tr class="">
+      <td class="num">1</td>
+      <td><strong>Population Health: Promoting timely access to high-quality care</strong><br><span style="font-size:11px;color:var(--muted)">Alternative sites of care (SBHCs, OTPs), evidence-based practices for chronic disease, nutrition, community paramedicine, CHW/peer support, mental health. Focus: access for students, substance use treatment, behavioral health services.</span></td>
+      <td class="funding">$183.0M (from $1B theoretical)</td>
+      <td><span class="cat" style="background:#7c3aed">A</span></td>
+      <td><span class="motion-tag motion-sub">SUBCONTRACTOR PLAY</span></td>
+      <td style="font-size:11px">Care coordination IT, telehealth for behavioral health, data systems</td>
+      <td class="status ">RFPs issued 2026</td>
+    </tr>
+<tr class="">
+      <td class="num">2</td>
+      <td><strong>Workforce: Strengthening Maine's rural health workforce</strong><br><span style="font-size:11px;color:var(--muted)">Training/recruitment/retention ($109.8M); workforce development pipelines ($92.9M); innovation/new models ($1.3M). Expand school career programs, train nurses/allied health with 5-year rural commitments, increase preceptors, physician/APP incentives.</span></td>
+      <td class="funding">$204.0M</td>
+      <td><span class="cat" style="background:#7c3aed">A</span><span class="cat" style="background:#0b5cad">B</span></td>
+      <td><span class="motion-tag motion-sell">SELL TO PROVIDER</span></td>
+      <td style="font-size:11px">Learning management, career pathway platforms</td>
+      <td class="status ">RFAs to be released</td>
+    </tr>
+<tr class="">
+      <td class="num">3</td>
+      <td><strong>Technology Innovation: Modernizing rural care delivery</strong><br><span style="font-size:11px;color:var(--muted)">Expanded telehealth ($45.8M), data integration/exchange support ($25.1M), patient-facing digital tools ($7.0M), EMR utility/functionality/security expansion ($121.8M), Maine Rural AI Hub ($2.5M). Interoperability, AI solutions, remote monitoring.</span></td>
+      <td class="funding">$202.2M</td>
+      <td><span class="cat" style="background:#7c3aed">A</span></td>
+      <td><span class="motion-tag motion-prime">PRIME ELIGIBLE</span></td>
+      <td style="font-size:11px">EMR/EHR platforms, telehealth, cloud services, data security, AI/ML</td>
+      <td class="status ">Multiple RFPs 2026</td>
+    </tr>
+<tr class="">
+      <td class="num">4</td>
+      <td><strong>Access: Bridging healthcare affordability gap</strong><br><span style="font-size:11px;color:var(--muted)">Uncompensated care payments (Y1), provider payments for essential benefits to uninsured (Y2-5), Medicaid enrollment enablement (Y4-5), coordinated transportation, consumer transparency tool.</span></td>
+      <td class="funding">$186.7M</td>
+      <td><span class="cat" style="background:#7c3aed">A</span></td>
+      <td><span class="motion-tag motion-sell">SELL TO PROVIDER</span></td>
+      <td style="font-size:11px">Digital enrollment platforms, consumer portals</td>
+      <td class="status ">Phased RFAs</td>
+    </tr>
+<tr class="">
+      <td class="num">5</td>
+      <td><strong>Sustainable rural health ecosystems</strong><br><span style="font-size:11px;color:var(--muted)">Hospital efficiency/financial management ($108.2M), regional health planning ($73.8M), multi-payer APM development ($7.0M), interfacility transport ($5.1M), behavioral health step-down capacity ($4.6M).</span></td>
+      <td class="funding">$198.6M</td>
+      <td><span class="cat" style="background:#7c3aed">A</span></td>
+      <td><span class="motion-tag motion-sub">SUBCONTRACTOR PLAY</span></td>
+      <td style="font-size:11px">APM analytics, financial management systems, care coordination</td>
+      <td class="status ">RFAs 2026</td>
+    </tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="step" id="ges-footprint">
+  <span class="step-label">GES footprint</span>
+  <h2>No GES named accounts — potential Commercial / SLED opportunity</h2>
+  <p class="lead">None of the 96 GES accounts are headquartered in Maine. These health systems may be served by Cisco Commercial or SLED teams.</p>
+  <p style="font-size:13px;font-weight:600;margin-top:14px">Non-GES health systems identified in Maine RFP documents:</p>
+  <div class="gap-card">
+    <div class="gap-name">MaineHealth</div>
+    <div class="gap-note">Largest integrated health system in Maine; operates multiple rural hospitals</div>
+  </div>
+  <div class="gap-card">
+    <div class="gap-name">Northern Light Health</div>
+    <div class="gap-note">Northeast Maine hospital system</div>
+  </div>
+</section>
+
+<section class="step" id="categories">
+  <span class="step-label">NOFO categories</span>
+  <h2>CMS categories in play in Maine</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px">
+    <div style="border:1px solid var(--border);border-left:4px solid #7c3aed;border-radius:6px;padding:10px 14px;background:#fff">
+      <span class="cat" style="background:#7c3aed">A</span> <strong style="font-size:13px">Prevention & chronic disease</strong>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px">In 5 of 5 initiatives</div>
+    </div>
+    <div style="border:1px solid var(--border);border-left:4px solid #0b5cad;border-radius:6px;padding:10px 14px;background:#fff">
+      <span class="cat" style="background:#0b5cad">B</span> <strong style="font-size:13px">Provider payments</strong>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px">In 1 of 5 initiatives</div>
+    </div>
+  </div>
+  <div style="margin-top:12px"><a class="srclink" href="nofo-categories.html">📖 See NOFO category reference for verbatim CMS definitions</a></div>
+</section>
+
+<section class="step" id="sources">
+  <span class="step-label">Sources</span>
+  <h2>Source documents</h2>
+  <div><a class="srclink" href="../RFP Downloads/Maine/SoM_RHTP SubmissionSummary.pdf">📄 Summary (One-pager)</a></div>
+  <div><a class="srclink" href="../RFP Downloads/Maine/V2_SoM_RHTP_Project Narrative_11Dec25_CMS Response ADDED.pdf">📄 Project Narrative (Full)</a></div>
+  <div style="margin-top:12px;font-size:12px;color:var(--muted)">Portal: DHHS website for RFP releases (specific URLs to be announced)</div>
+</section>
+
+<nav class="topbar">
+  <div class="left"><a href="index.html">&larr; All States</a></div>
+  <div class="right">
+    <a href="accounts.html">GES Provider Dashboard</a>
+    <a href="nofo-categories.html">📖 NOFO Reference</a>
+  </div>
+</nav>
+
+<footer>Cisco GES · RHTP State Intelligence · Generated from Maine RFP Downloads folder · Data verified against CMS-RHT-26-001 NOFO categories</footer>
+</div></body></html>
