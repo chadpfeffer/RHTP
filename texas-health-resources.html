@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>RHTP Brief — Texas Health Resources</title>
+<style>
+:root{--pri:#0b5cad;--pri2:#1e40af;--bg:#f8fafc;--card:#ffffff;--border:#e2e8f0;--text:#0f172a;--muted:#64748b;--ok:#10b981;--warn:#f59e0b;--err:#ef4444}
+*{box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);margin:0;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:24px}
+header.hero{background:linear-gradient(135deg,#0b5cad 0%,#1e40af 100%);color:#fff;padding:32px;border-radius:14px;margin-bottom:24px;box-shadow:0 4px 16px rgba(11,92,173,.15)}
+header.hero h1{margin:0 0 6px 0;font-size:28px}
+header.hero .sub{opacity:.92;font-size:14px}
+header.hero .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+.kpi{background:rgba(255,255,255,.12);padding:12px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.2)}
+.kpi .v{font-size:22px;font-weight:700}
+.kpi .l{font-size:11px;text-transform:uppercase;letter-spacing:.5px;opacity:.85}
+nav.toc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:24px;font-size:13px;display:flex;flex-wrap:wrap;gap:10px}
+nav.toc a{color:var(--pri);text-decoration:none;padding:4px 10px;border:1px solid var(--border);border-radius:20px}
+nav.toc a:hover{background:var(--pri);color:#fff;border-color:var(--pri)}
+nav.topbar{display:flex;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 16px;margin-bottom:16px;font-size:13px}
+nav.topbar .left a,nav.topbar .right a{color:var(--pri);text-decoration:none;font-weight:600;padding:6px 12px;border-radius:6px}
+nav.topbar .left a:hover,nav.topbar .right a:hover{background:#eef2ff}
+nav.topbar .right{display:flex;gap:6px}
+section.step{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 26px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+section.step h2{margin:0 0 4px 0;font-size:20px;color:var(--pri2)}
+section.step .step-label{display:inline-block;background:var(--pri);color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:10px;letter-spacing:.5px;margin-bottom:10px}
+section.step .lead{color:var(--muted);font-size:13px;margin:0 0 14px 0}
+.state-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:12px}
+.state-card{border:1px solid var(--border);border-radius:10px;padding:14px;background:#fafbfc}
+.state-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.state-head h4{margin:0;font-size:15px}
+.state-meta{font-size:12px;color:var(--muted);margin-bottom:8px}
+.state-meta div{margin:2px 0}
+.state-init{font-size:12px;border-top:1px dashed var(--border);padding-top:8px;margin-top:8px}
+.badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:.4px}
+.badge-active{background:#fee2e2;color:#991b1b}
+.badge-opening{background:#fef3c7;color:#92400e}
+.badge-planning{background:#e2e8f0;color:#475569}
+.badge-issued{background:#dcfce7;color:#166534}
+.badge-anticipated{background:#fef3c7;color:#92400e}
+.nofo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.nofo-card{border:1px solid var(--border);border-left:5px solid var(--accent);border-radius:10px;padding:14px 16px;background:#fff}
+.nofo-card h4{margin:0 0 4px 0;font-size:14px}
+.nofo-card .budget{display:inline-block;font-size:11px;background:#f1f5f9;color:#334155;padding:2px 8px;border-radius:10px;margin-bottom:8px}
+.nofo-card ul{margin:6px 0;padding-left:18px;font-size:12px}
+.nofo-card .dont{color:var(--err);font-size:11px;margin-top:6px}
+.nofo-card .say{color:var(--ok);font-size:12px;margin-top:4px}
+.nofo-card .persona{font-size:11px;color:var(--muted);margin-top:6px;font-style:italic}
+table{width:100%;border-collapse:collapse;font-size:13px}
+table th{background:#f1f5f9;text-align:left;padding:8px 10px;font-size:12px;text-transform:uppercase;letter-spacing:.3px;color:#475569;border-bottom:2px solid var(--border)}
+table td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+.rule{background:#fef3c7;border-left:4px solid var(--warn);padding:12px 16px;border-radius:6px;margin:10px 0;font-size:13px}
+.rule strong{color:#92400e}
+.ref-arch{border:2px dashed #cbd5e1;background:#f8fafc;border-radius:10px;padding:16px 18px;margin:10px 0}
+.ref-arch h4{margin:0 0 6px 0;color:var(--pri2)}
+.ref-arch .placeholder{font-size:11px;color:var(--err);background:#fee2e2;padding:2px 8px;border-radius:6px;display:inline-block;margin-left:8px;text-transform:uppercase;letter-spacing:.3px}
+.ref-arch .cats{font-size:11px;color:var(--muted);margin-top:6px}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.contact-card{border:1px solid var(--border);border-radius:8px;padding:12px 14px;background:#fafbfc;font-size:13px}
+.contact-card .name{font-weight:700;color:var(--pri2)}
+.contact-card .role{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.3px}
+.contact-status{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.status-yes{background:var(--ok)}
+.status-partial{background:var(--warn)}
+.status-no{background:var(--muted)}
+.muted{color:var(--muted)}
+.callout{background:#eef2ff;border-left:4px solid var(--pri);padding:12px 16px;border-radius:6px;margin:10px 0;font-size:13px}
+footer{text-align:center;color:var(--muted);font-size:11px;margin:30px 0 10px 0}
+@media(max-width:720px){.twocol{grid-template-columns:1fr}header.hero .kpis{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head><body>
+<div class="wrap">
+
+<nav class="topbar">
+  <div class="left"><a href="accounts.html">← All Provider Accounts</a></div>
+  <div class="right"><a href="nofo-categories.html">📖 NOFO Category Reference</a></div>
+</nav>
+
+<header class="hero">
+  <div class="sub">RHTP Account & Solution Brief</div>
+  <h1>Texas Health Resources</h1>
+  <div class="sub">West &nbsp;·&nbsp; HQ: Texas &nbsp;·&nbsp; Priority Score: 2 &nbsp;·&nbsp; MONITOR</div>
+  <div class="kpis">
+    <div class="kpi"><div class="v">1</div><div class="l">RHTP States</div></div>
+    <div class="kpi"><div class="v">0</div><div class="l">Active RFPs</div></div>
+    <div class="kpi"><div class="v">1</div><div class="l">Opening Soon</div></div>
+    <div class="kpi"><div class="v">6</div><div class="l">NOFO Categories</div></div>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#s1">1. States</a>
+  <a href="#s2">2–3. State Initiatives</a>
+  <a href="#s4">4. Cisco Contribution</a>
+  <a href="#s5">5. Reference Architectures</a>
+  <a href="#s6">6–7. Current → Future State</a>
+  <a href="#s8">8. Who Cares</a>
+  <a href="#s9">9. RFP Response</a>
+</nav>
+
+<div class="rule"><strong>⚠ THE #1 RULE:</strong> Never position Cisco as "IT infrastructure" (Category F is capped at 5% of the grant). Reposition every conversation into Care Availability (G), Workforce (E), Behavioral Health (H), or Prevention (A) — these are 15–25% categories. Same products, 3–5× the budget pool.</div>
+
+<section class="step" id="s1">
+  <span class="step-label">STEP 1</span>
+  <h2>States where Texas Health Resources has facilities</h2>
+  <p class="lead">The states in Texas Health Resources's RHTP footprint that are either actively soliciting proposals or opening soon.</p>
+  <p><strong>, Texas</strong></p>
+  <p class="muted" style="font-size:12px">0 active RFP state(s) · 1 opening soon · 1 total RHTP states in footprint</p>
+</section>
+
+<section class="step" id="s2">
+  <span class="step-label">STEPS 2 & 3</span>
+  <h2>What the state & CMS consider the health initiatives</h2>
+  <p class="lead">Use the state's exact initiative language in your pitch. CMS's RHTP framework scores proposals on Prevention (A), Care Availability (G), Behavioral Health (H), Workforce (E), and Innovation (I) — these map directly to the state initiatives below.</p>
+  <div class="state-grid">
+    <div class="state-card">
+      <div class="state-head">
+        <h4>Texas</h4>
+        <span class="badge badge-opening">OPENING SOON</span>
+      </div>
+      <div class="state-meta">
+        <div><strong>Year 1:</strong> $281.32M &nbsp;·&nbsp; <strong>5-Yr:</strong> $1.406B</div>
+        <div><strong>Deadlines:</strong> Rolling basis</div>
+        <div><strong>Portal:</strong> <a href="Direct award process through HHSC to identified rural hospital districts" target="_blank">Direct award process through HHSC to ide</a></div>
+        <div><strong>RFP/RFA:</strong> Direct Awards to Rural Hospital Districts</div>
+      </div>
+      <div class="state-init"><strong>Health Initiatives (how the state frames the work):</strong><br>• Initiative 1: Direct Hospital District Awards</div>
+    </div>
+
+  </div>
+</section>
+
+<section class="step" id="s4">
+  <span class="step-label">STEP 4</span>
+  <h2>How Cisco contributes to these initiatives</h2>
+  <p class="lead">NOFO categories where Texas Health Resources's footprint lights up, and the Cisco solutions that map to each. These are the exact clinical framings to use — and the IT framings to avoid. <a href="nofo-categories.html" style="color:var(--pri);font-weight:600">New to NOFO categories? Read the full reference →</a></p>
+  <div class="nofo-grid">
+        <div class="nofo-card" style="--accent:#7c3aed">
+          <h4>A — Prevention & Chronic Disease</h4>
+          <span class="budget">10–15% of state budget</span>
+          <ul><li>Splunk (population health analytics)</li>
+<li>Webex Contact Center + AI Agents (outreach)</li>
+<li>Cisco Security Suite (HIPAA compliance)</li></ul>
+          <div class="say">✓ SAY: Population health analytics, clinical decision support, quality measurement platform</div>
+          <div class="dont">✗ DON'T SAY: Log management, monitoring tool, call center software</div>
+          <div class="persona">Who cares: CMO / Population Health VP / Quality Officer</div>
+        </div>
+
+        <div class="nofo-card" style="--accent:#06b6d4">
+          <h4>C — Consumer-Facing Technology</h4>
+          <span class="budget">8–12% of state budget</span>
+          <ul><li>Webex Contact Center + AI Agents</li>
+<li>ThousandEyes (patient app monitoring)</li></ul>
+          <div class="say">✓ SAY: Patient access / digital front door — scheduling, triage, navigation</div>
+          <div class="dont">✗ DON'T SAY: Call center software, phone system</div>
+          <div class="persona">Who cares: CMO / Chief Digital Officer / Patient Experience VP</div>
+        </div>
+
+        <div class="nofo-card" style="--accent:#ec4899">
+          <h4>D — Care Coordination & Management</h4>
+          <span class="budget">10–15% of state budget</span>
+          <ul><li>Webex Meetings (team huddles)</li>
+<li>Splunk (care pathway analytics)</li></ul>
+          <div class="say">✓ SAY: Care team synchronization, outcome tracking</div>
+          <div class="dont">✗ DON'T SAY: Meeting software, dashboards</div>
+          <div class="persona">Who cares: CMO / Care Coordinator Manager</div>
+        </div>
+
+        <div class="nofo-card" style="--accent:#0ea5e9">
+          <h4>E — Workforce Development</h4>
+          <span class="budget">15–25% of state budget</span>
+          <ul><li>Webex Events / Video Endpoints (CME, grand rounds)</li>
+<li>Webex Meetings / Instant Connect (residency, tele-mentoring)</li>
+<li>Webex Contact Center (clinical support)</li></ul>
+          <div class="say">✓ SAY: Clinical education & workforce retention platform — CME delivery, residency rotations, specialty mentoring</div>
+          <div class="dont">✗ DON'T SAY: Meeting room hardware, event platform, video conferencing</div>
+          <div class="persona">Who cares: CMO / GME Director / CNO (nursing retention) / CHRO</div>
+        </div>
+
+        <div class="nofo-card" style="--accent:#ef4444">
+          <h4>F — IT Infrastructure (CAPPED 5%)</h4>
+          <span class="budget">5% CAP of state budget</span>
+          <ul><li>Catalyst Campus Switching + Wi-Fi 7</li>
+<li>Meraki Cloud-Managed</li></ul>
+          <div class="say">✓ SAY: AVOID positioning here — reposition into E, G, or H wherever possible</div>
+          <div class="dont">✗ DON'T SAY: This IS the "don't say" category.</div>
+          <div class="persona">Who cares: CIO / IT Director (traditional buyer — budget is 3-5x larger in clinical categories)</div>
+        </div>
+
+        <div class="nofo-card" style="--accent:#a855f7">
+          <h4>H — Behavioral Health & Addiction</h4>
+          <span class="budget">12–18% of state budget</span>
+          <ul><li>Webex Instant Connect (telepsych)</li>
+<li>Webex Contact Center (crisis line)</li></ul>
+          <div class="say">✓ SAY: Telepsychiatry platform, crisis response infrastructure</div>
+          <div class="dont">✗ DON'T SAY: Mental health software, call center</div>
+          <div class="persona">Who cares: CMO / Psychiatry Chair / Behavioral Health Director</div>
+        </div>
+
+  </div>
+</section>
+
+<section class="step" id="s5">
+  <span class="step-label">STEP 5</span>
+  <h2>Reference architectures</h2>
+  <p class="lead">Templates prioritized by the NOFO category combinations in Texas Health Resources's footprint. Your team will flesh these out — below is the starting structure for each.</p>
+
+        <div class="ref-arch">
+          <h4>Rural Care Backbone + Workforce <span class="placeholder">Template — Your team to build</span></h4>
+          <div>SD-WAN spine connecting rural sites → Webex Meetings/Endpoints for specialist consults &amp; CME → Meraki for clinical site connectivity → Secure Access for clinician BYOD</div>
+          <div class="cats">Applies to NOFO: G, E</div>
+        </div>
+
+        <div class="ref-arch">
+          <h4>Population Health Analytics <span class="placeholder">Template — Your team to build</span></h4>
+          <div>Splunk ingestion of claims + EHR + SDOH data → dashboards for chronic disease cohorts → Webex Contact Center AI for proactive outreach</div>
+          <div class="cats">Applies to NOFO: A</div>
+        </div>
+
+        <div class="ref-arch">
+          <h4>Digital Front Door <span class="placeholder">Template — Your team to build</span></h4>
+          <div>Webex Contact Center + AI Agents → patient self-scheduling, triage, navigation → ThousandEyes monitoring the patient experience</div>
+          <div class="cats">Applies to NOFO: C</div>
+        </div>
+
+        <div class="ref-arch">
+          <h4>Telepsychiatry + Crisis Response <span class="placeholder">Template — Your team to build</span></h4>
+          <div>Webex Instant Connect telepsych from ED & primary care → Contact Center crisis line → Secure messaging for MAT coordination</div>
+          <div class="cats">Applies to NOFO: H</div>
+        </div>
+
+        <div class="ref-arch">
+          <h4>Security + Cisco Capital (cross-cutting) <span class="placeholder">Template — Your team to build</span></h4>
+          <div>XDR, ISE, Firewall, Secure Access protecting the entire RHTP investment → Cisco Capital operating lease to convert CapEx into allowable OpEx under 2 CFR 200.465</div>
+          <div class="cats">Applies to NOFO: ALL, K</div>
+        </div>
+
+  <p class="muted" style="font-size:12px">Template priority is based on the NOFO combinations that appear most often across all 27 Engage Now provider accounts. G+E is the universal baseline (present in nearly every account); A, H, I, and C are bolt-ons based on the customer's specific initiative mix.</p>
+</section>
+
+<section class="step" id="s6">
+  <span class="step-label">STEPS 6 & 7</span>
+  <h2>Current state → Future state → Outcomes</h2>
+  <p class="lead">Walk the customer from what they have today to the future state the reference architecture enables, and tie each future-state capability to the outcome the state's RFP is scoring on.</p>
+  <table>
+    <tr><th style="width:28%">Current state (discover)</th><th style="width:30%">Future state (reference arch)</th><th style="width:22%">Outcome the state scores on</th><th style="width:20%">NOFO</th></tr>
+    <tr><td>Rural sites run independent MPLS / best-effort internet; specialist consults require patient transfer</td><td>SD-WAN spine with Webex Meetings + Video Endpoints in every clinical site</td><td>Reduced transfers, improved time-to-specialist, stroke-window compliance</td><td>G</td></tr>
+    <tr><td>CME and residency mentoring done ad-hoc via personal Zoom or in-person travel</td><td>Webex Events + persistent video rooms for grand rounds, tele-mentoring, rural rotations</td><td>Clinical workforce retention rate, rural provider fill rate</td><td>E</td></tr>
+    <tr><td>Population health data siloed in EHR reports with no proactive outreach workflow</td><td>Splunk ingesting claims + EHR + SDOH → dashboards + Contact Center AI outreach</td><td>Chronic disease control (HbA1c, BP), preventive screening rates</td><td>A</td></tr>
+    <tr><td>Behavioral health access via paper referrals and 60+ day waits</td><td>Webex Instant Connect telepsych from ED & primary care; Contact Center crisis line</td><td>ED behavioral health boarding, crisis response time, MAT access</td><td>H</td></tr>
+    <tr><td>Infrastructure refresh would be a CapEx hit competing with the 20% cap</td><td>Cisco Capital operating lease — rental costs under 2 CFR 200.465</td><td>Keeps the grant under the 80% OpEx allowability threshold</td><td>K</td></tr>
+    <tr><td>Security is perimeter-based; RHTP grant has no protection layer</td><td>XDR + ISE + Secure Access wrapping the entire RHTP investment</td><td>HIPAA posture, grant-risk mitigation, breach-cost avoidance</td><td>ALL</td></tr>
+
+  </table>
+  <p class="muted" style="font-size:12px">Customize this table with Texas Health Resources's actual current-state findings during discovery. The "outcome" column is the language the state RFP evaluators are measuring against.</p>
+</section>
+
+<section class="step" id="s8">
+  <span class="step-label">STEP 8</span>
+  <h2>Who at Texas Health Resources cares about these outcomes</h2>
+  <p class="lead">Start with Government Affairs (owns the RFP) or the CFO (owns the grant flow & Cisco Capital story). Avoid leading with IT — Category F is capped at 5%.</p>
+<div class="twocol">
+          <div class="contact-card"><div class="role"><span class="contact-status status-partial"></span>Grant Manager / Gov Affairs</div><div class="name">Not confirmed</div><div class="muted" style="font-size:11px">Government Affairs and Advocacy team exists</div></div>
+          <div class="contact-card"><div class="role"><span class="contact-status status-yes"></span>CFO</div><div class="name">Ron Long</div><div class="muted" style="font-size:11px">EVP and Chief Financial Officer</div></div>
+</div>
+        <div class="callout"><strong>Best entry point:</strong> BEST ENTRY: Ron Long (EVP/CFO) — direct financial authority</div>
+
+  <details style="margin-top:12px"><summary class="muted" style="font-size:12px;cursor:pointer">Additional call list from the workbook's "Who to Call" column</summary>
+    <div class="muted" style="font-size:12px;padding:8px 0;white-space:pre-line">EMS Medical Director (clinical protocols, outcomes); EMS Chief (operations, connectivity); CMO/ED Director (pre-arrival coordination); CIO (fleet connectivity, security); CMIO (clinical data access, decision support)</div>
+  </details>
+
+</section>
+
+<section class="step" id="s9">
+  <span class="step-label">STEP 9</span>
+  <h2>How Cisco helps Texas Health Resources respond to the RFPs</h2>
+  <table>
+    <tr><th>What we provide</th><th>What the account team does with it</th></tr>
+    <tr><td>Reference architecture diagrams (above) — pre-mapped to NOFO categories</td><td>Customer's grant writer pastes them into the technical approach section, cites the NOFO category, and uses the "SAY Instead" language</td></tr>
+    <tr><td>Grant-ready budget narrative language ("clinical education platform", "care delivery backbone", not "video conferencing")</td><td>Customer's finance team drops into the budget justification narrative</td></tr>
+    <tr><td>Cisco Capital operating-lease structure under 2 CFR 200.465</td><td>Converts CapEx into OpEx, stays under the 20% infrastructure cap, preserves budget for clinical categories</td></tr>
+    <tr><td>Outcome metrics tied to each solution (time-to-specialist, retention rate, HbA1c)</td><td>Customer paste into the evaluation criteria / scoring section</td></tr>
+    <tr><td>Security overlay language for ALL categories</td><td>Adds cross-category investment protection the state evaluator sees as de-risking the grant</td></tr>
+    <tr><td>Cross-account learnings from other RHTP deals in the footprint</td><td>Benchmarking + "what won in State X" for the proposal narrative</td></tr>
+
+  </table>
+  <div class="callout"><strong>Account team next step:</strong> PREPARE — RFPs opening soon in 1 state(s). Brief your champion now so they're ready when sub-awards drop.</div>
+</section>
+
+<section class="step">
+  <h2>Workbook quick links</h2>
+  <p class="muted" style="font-size:12px">Full detail lives in the RHTP Account & Solution Briefing v2.0.xlsx workbook:</p>
+  <ul style="font-size:13px">
+    <li><strong>My Accounts</strong> — full 93-account pipeline with priority scores</li>
+    <li><strong>Solution Playbook</strong> — every NOFO category with "don't say / say instead" language</li>
+    <li><strong>State Detail</strong> — all 50 states with RFP status, deadlines, portals, initiatives</li>
+    <li><strong>Account Deep Dive</strong> — state-by-state breakdown for Texas Health Resources</li>
+    <li><strong>RHTP Contact Intel</strong> — named contacts for the top 12 priority accounts</li>
+    <li><strong>Finding Your Champion</strong> — who to call by persona and why</li>
+  </ul>
+  <p class="muted" style="font-size:12px">Lead Cisco solutions per the workbook:<br>• Campus Networking (Catalyst PoE, Meraki) + Compute (UCS)<br>• Collaboration (Webex Meetings, Video Endpoints, Contact Center)<br>• Compute &amp; Edge (UCS, Unified Edge) + Observability (Splunk, ThousandEyes)<br>• Data</p>
+</section>
+
+<nav class="topbar" style="margin-top:24px">
+  <div class="left"><a href="accounts.html">← Back to All Provider Accounts</a></div>
+  <div class="right"><a href="nofo-categories.html">📖 NOFO Category Reference</a></div>
+</nav>
+
+<footer>RHTP Account Brief · Texas Health Resources · Generated from v2.0 workbook · Cisco internal</footer>
+</div></body></html>

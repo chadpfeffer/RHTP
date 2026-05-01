@@ -1,0 +1,310 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Ohio — RHTP GES State Detail</title>
+<style>
+:root{--pri:#0b5cad;--pri2:#1e40af;--bg:#f8fafc;--card:#ffffff;--border:#e2e8f0;--text:#0f172a;--muted:#64748b;--ok:#10b981;--warn:#f59e0b;--err:#ef4444}
+*{box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);margin:0;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:24px}
+header.hero{background:linear-gradient(135deg,#0b5cad 0%,#1e40af 100%);color:#fff;padding:42px 40px;border-radius:14px;margin-bottom:24px;box-shadow:0 4px 16px rgba(11,92,173,.15)}
+header.hero h1{margin:0 0 6px 0;font-size:28px}
+header.hero .sub{opacity:.92;font-size:14px}
+header.hero .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+.kpi{background:rgba(255,255,255,.12);padding:12px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.2)}
+.kpi .v{font-size:22px;font-weight:700}
+.kpi .l{font-size:11px;text-transform:uppercase;letter-spacing:.5px;opacity:.85}
+nav.topbar{display:flex;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 16px;margin-bottom:16px;font-size:13px}
+nav.topbar .left a,nav.topbar .right a{color:var(--pri);text-decoration:none;font-weight:600;padding:6px 12px;border-radius:6px}
+nav.topbar .left a:hover,nav.topbar .right a:hover{background:#eef2ff}
+nav.topbar .right{display:flex;gap:6px}
+nav.toc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:24px;font-size:13px;display:flex;flex-wrap:wrap;gap:10px}
+nav.toc a{color:var(--pri);text-decoration:none;padding:4px 10px;border:1px solid var(--border);border-radius:20px}
+nav.toc a:hover{background:var(--pri);color:#fff;border-color:var(--pri)}
+section.step{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 26px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+section.step h2{margin:0 0 4px 0;font-size:20px;color:var(--pri2)}
+section.step .step-label{display:inline-block;background:var(--pri);color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:10px;letter-spacing:.5px;margin-bottom:10px}
+section.step .lead{color:var(--muted);font-size:13px;margin:0 0 14px 0}
+.rfp-card{border:1px solid var(--border);border-left:5px solid var(--err);border-radius:10px;padding:18px 20px;margin-bottom:16px;background:#fffbfb}
+.rfp-card h3{margin:0 0 6px 0;color:var(--pri2);font-size:17px}
+.rfp-card .rfp-id{display:inline-block;background:#fee2e2;color:#991b1b;font-size:11px;font-weight:700;padding:3px 9px;border-radius:10px;letter-spacing:.4px;margin-right:8px}
+.rfp-card .dl-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:10px;letter-spacing:.4px}
+.rfp-card .dl-badge.issued{background:#fee2e2;color:#991b1b}
+.rfp-card .dl-badge.anticipated{background:#fef3c7;color:#92400e}
+.rfp-meta{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;font-size:12px;margin:10px 0;padding:10px;background:#fafbfc;border-radius:6px}
+.rfp-meta div strong{color:var(--muted);text-transform:uppercase;font-size:10px;letter-spacing:.3px;display:block}
+.rfp-scope{font-size:13px;margin:10px 0}
+.rfp-cisco{background:#eef2ff;border-left:4px solid var(--pri);padding:10px 14px;border-radius:6px;font-size:13px;margin:10px 0}
+.rfp-cisco strong{color:var(--pri2)}
+.rfp-cats{margin:8px 0}
+.init-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.init-table th{background:#f1f5f9;text-align:left;padding:8px 10px;font-size:11px;text-transform:uppercase;letter-spacing:.3px;color:#475569;border-bottom:2px solid var(--border)}
+.init-table td{padding:10px;border-bottom:1px solid var(--border);vertical-align:top;font-size:12px}
+.init-table td.num{font-weight:700;color:var(--pri);width:28px}
+.init-table td.funding{white-space:nowrap;color:#065f46;font-weight:700}
+.init-table td.status{font-size:11px}
+.init-table td.status.active{color:var(--err);font-weight:700}
+.init-table tr.active-row{background:#fef9f9}
+.cat{display:inline-block;font-size:10px;font-weight:700;width:20px;height:20px;line-height:20px;text-align:center;border-radius:4px;color:#fff;margin-right:2px}
+.gap-card{border:1px solid var(--border);border-left:4px solid var(--warn);border-radius:8px;padding:12px 16px;margin:8px 0;background:#fffbeb}
+.gap-card .gap-name{font-weight:700;color:#92400e;font-size:14px}
+.gap-card .gap-note{font-size:12px;color:var(--muted);margin-top:4px}
+.ges-card{border:1px solid var(--border);border-left:4px solid var(--ok);border-radius:8px;padding:12px 16px;margin:8px 0;background:#f0fdf4}
+.ges-card .ges-name{font-weight:700;color:#166534;font-size:14px}
+.ges-card .ges-note{font-size:12px;color:var(--muted);margin-top:4px}
+.motion-tag{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:10px;letter-spacing:.4px;margin-right:6px;text-transform:uppercase}
+.motion-prime{background:#dcfce7;color:#166534}
+.motion-sub{background:#e0e7ff;color:#3730a3}
+.motion-sell{background:#fef3c7;color:#92400e}
+.model-banner{display:inline-block;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:700;letter-spacing:.3px;margin-bottom:6px}
+.model-vendor{background:#e0e7ff;color:#3730a3;border:1px solid #c7d2fe}
+.model-hospital{background:#dcfce7;color:#166534;border:1px solid #bbf7d0}
+.callout{background:#eef2ff;border-left:4px solid var(--pri);padding:12px 16px;border-radius:6px;margin:10px 0;font-size:13px}
+.rule{background:#fef3c7;border-left:4px solid var(--warn);padding:12px 16px;border-radius:6px;margin:10px 0;font-size:13px}
+.rule strong{color:#92400e}
+footer{text-align:center;color:var(--muted);font-size:11px;margin:30px 0 10px 0}
+a.srclink{color:var(--pri);text-decoration:none;font-size:12px;font-weight:600;padding:4px 10px;background:#eef2ff;border-radius:6px;margin-right:6px;display:inline-block;margin-top:4px}
+a.srclink:hover{background:var(--pri);color:#fff}
+</style></head><body>
+<div class="wrap">
+
+<nav class="topbar">
+  <div class="left"><a href="index.html">&larr; All States</a></div>
+  <div class="right">
+    <a href="accounts.html">GES Provider Dashboard</a>
+    <a href="nofo-categories.html">📖 NOFO Reference</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="sub">Cisco GES · RHTP State Detail</div>
+  <h1>Ohio — ACTIVE — Workforce Pipeline RFP (Round 2, 3/10/26 deadline)</h1>
+  <div class="sub">Ohio Department of Health (ODH)</div>
+  <div class="kpis">
+    <div class="kpi"><div class="v">TBD</div><div class="l">Year 1 Award</div></div>
+    <div class="kpi"><div class="v">TBD</div><div class="l">5-Year Total</div></div>
+    <div class="kpi"><div class="v">1</div><div class="l">Initiatives</div></div>
+    <div class="kpi"><div class="v">3/3</div><div class="l">Issued / Total RFPs</div></div>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#at-a-glance">At a glance</a>
+  <a href="#active-rfps">Active RFPs (3)</a>
+  <a href="#initiatives">Initiatives (1)</a>
+  <a href="#ges-footprint">GES footprint</a>
+  <a href="#categories">NOFO categories</a>
+  <a href="#sources">Source documents</a>
+</nav>
+
+<section class="step" id="at-a-glance">
+  <span class="step-label">At a glance</span>
+  <h2>What account teams need to know</h2>
+  <div style="margin-bottom:10px">
+    <span class="model-banner model-vendor">VENDOR MODEL — State issues RFPs; vendors apply, not providers</span>
+  </div>
+  <div class="callout">
+    <strong>Procurement model:</strong> State-procured — RFP-based competitive selection for workforce initiatives
+  </div>
+  <div style="margin:10px 0;font-size:12px">
+    <strong>Cisco sales motions:</strong>
+    <span class="motion-tag motion-prime">PRIME ELIGIBLE</span> Cisco bids directly
+    <span class="motion-tag motion-sub">SUBCONTRACTOR PLAY</span> Cisco partners with winning vendor
+    <span class="motion-tag motion-sell">SELL TO PROVIDER</span> Provider buys from Cisco
+  </div>
+  <div class="callout">
+    <strong>8 GES account(s) in Ohio:</strong> CareSource, Cleveland Clinic, OhioHealth, OSU Medical, ProMedica, University Hospitals, Bon Secours Mercy, Cincinnati Children's. See <a href="#ges-footprint">GES footprint</a>.
+  </div>
+  <p style="font-size:13px"><strong>Geography:</strong> Ohio's 73 identified rural counties</p>
+  <p style="font-size:13px"><strong>Portal:</strong> https://ohiobuys.ohio.gov</p>
+</section>
+
+<section class="step" id="active-rfps">
+  <span class="step-label">Live opportunities</span>
+  <h2>RFPs (3)</h2>
+  <p class="lead">3 issued with due dates · 0 anticipated from state planning documents</p>
+
+  <div class="rfp-card">
+    <div>
+      <span class="rfp-id">SRC0000036107</span>
+      <span class="dl-badge issued">ISSUED — Due March 10, 2026 3:00PM ET</span>
+      <span class="motion-tag motion-sell">SELL TO PROVIDER</span>
+    </div>
+    <h3>Rural Health Workforce Pipeline; Pathways Upskilling and Retention RFP</h3>
+    <div class="rfp-cats"><span class="cat" style="background:#06b6d4">C</span> <span style="font-size:11px;color:var(--muted)">· funding est. $9M (estimated)</span></div>
+    <div class="rfp-meta">
+      <div><strong>Issued</strong>January 20, 2026 (Round 2: 2/27/26 amendment)</div>
+      <div><strong>Proposals due</strong>March 10, 2026 3:00PM ET</div>
+      <div><strong>Award notification</strong>TBD (Q2 2026 expected)</div>
+      <div><strong>Funding est.</strong>$9M (estimated)</div>
+    </div>
+    <div class="rfp-scope"><strong>Scope:</strong> Develop rural healthcare workforce pipelines K-12 to career. Career awareness programs, pathway education, work-based learning, apprenticeships, recruitment/retention incentives (5-year commitments), workforce upskilling.</div>
+    <div class="rfp-cisco"><strong>Cisco angle:</strong> Workforce training platform, career pathway management, recruitment dashboard</div>
+    <div><a class="srclink" href="../RFP Downloads/Ohio/Sourcing Project (extranet): OhioBuys.pdf">📄 View source document</a></div>
+  </div>
+
+  <div class="rfp-card">
+    <div>
+      <span class="rfp-id">DOH59679</span>
+      <span class="dl-badge issued">ISSUED — Due June 15, 2026 3:00 PM ET</span>
+      <span class="motion-tag motion-sub">SUBCONTRACTOR PLAY</span>
+    </div>
+    <h3>RHT Community Health Worker (CHW) Training & TA</h3>
+    <div class="rfp-cats"><span class="cat" style="background:#7c3aed">A</span> <span style="font-size:11px;color:var(--muted)">· funding est. $750,000</span></div>
+    <div class="rfp-meta">
+      <div><strong>Issued</strong>ISSUED</div>
+      <div><strong>Proposals due</strong>June 15, 2026 3:00 PM ET</div>
+      <div><strong>Award notification</strong>TBD</div>
+      <div><strong>Funding est.</strong>$750,000</div>
+    </div>
+    <div class="rfp-scope"><strong>Scope:</strong> Design and deliver CHW training curriculum for rural Ohio; chronic disease prevention, telehealth tech, school-based health</div>
+    <div class="rfp-cisco"><strong>Cisco angle:</strong> Online training platform, LMS, community of practice digital tools</div>
+    <div><a class="srclink" href="../RFP Downloads/Ohio/DOH59679-RHT-SFY26-27-Community_Health_Worker_Training__TA-_ODH_RFP.pdf">📄 View source document</a></div>
+  </div>
+
+  <div class="rfp-card">
+    <div>
+      <span class="rfp-id">DOH59808</span>
+      <span class="dl-badge issued">ISSUED — Due June 16, 2026 3:00 PM ET</span>
+      <span class="motion-tag motion-prime">PRIME ELIGIBLE</span>
+    </div>
+    <h3>RHTP Healthier Ohio - Chronic Disease Track 1</h3>
+    <div class="rfp-cats"><span class="cat" style="background:#7c3aed">A</span> <span style="font-size:11px;color:var(--muted)">· funding est. $14.6M; up to $200K per clinic</span></div>
+    <div class="rfp-meta">
+      <div><strong>Issued</strong>ISSUED</div>
+      <div><strong>Proposals due</strong>June 16, 2026 3:00 PM ET</div>
+      <div><strong>Award notification</strong>TBD</div>
+      <div><strong>Funding est.</strong>$14.6M; up to $200K per clinic</div>
+    </div>
+    <div class="rfp-scope"><strong>Scope:</strong> Diabetes & hypertension management: lifestyle medicine, coordinated care teams, remote patient monitoring, CHW engagement; up to 73 awards (one per non-urban county)</div>
+    <div class="rfp-cisco"><strong>Cisco angle:</strong> Remote patient monitoring devices, EHR integration, digital health tools, wearable tech, chronic disease analytics</div>
+    <div><a class="srclink" href="../RFP Downloads/Ohio/Ohio DOH59808-RHTP-+SFY27-+Healthier+Ohio+Initiatives-Preventing+and+Addressing+Chronic+Disease+Track+1-+SUBREC+RFP.pdf">📄 View source document</a></div>
+  </div>
+</section>
+
+<section class="step" id="initiatives">
+  <span class="step-label">Full state plan</span>
+  <h2>Initiative (1)</h2>
+  <table class="init-table">
+    <thead><tr><th>#</th><th>Initiative</th><th>Funding</th><th>NOFO cats</th><th>Cisco motion</th><th>Cisco angle</th><th>RFP status</th></tr></thead>
+    <tbody>
+<tr class="active-row">
+      <td class="num">1</td>
+      <td><strong>Rural Health Workforce Pipeline, Pathways, and Retention</strong><br><span style="font-size:11px;color:var(--muted)">Develop comprehensive workforce pipelines from K-12 education through healthcare career placement. Career awareness, education pathways (HS/community college/university/trade school), apprenticeships, recruitment/retention incentives (6-month housing stipends, 5-year commitments).</span></td>
+      <td class="funding">$9M</td>
+      <td><span class="cat" style="background:#06b6d4">C</span></td>
+      <td><span class="motion-tag motion-sell">SELL TO PROVIDER</span></td>
+      <td style="font-size:11px">Career pathway tracking, workforce recruitment platform, training management</td>
+      <td class="status active">ACTIVE — RFP Round 2, deadline 3/10/26; 9 responses on-time</td>
+    </tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="step" id="ges-footprint">
+  <span class="step-label">GES footprint</span>
+  <h2>GES accounts in Ohio</h2>
+  <p class="lead">8 GES provider account(s) with presence in Ohio.</p>
+  <div class="ges-card">
+    <div class="ges-name">CareSource</div>
+    <div class="ges-note">HQ: OH · Ohio-based managed care and provider network likely bidding on workforce initiatives</div>
+  </div>
+  <div class="ges-card">
+    <div class="ges-name">Cleveland Clinic</div>
+    <div class="ges-note">HQ: OH · Major Ohio health system</div>
+  </div>
+  <div class="ges-card">
+    <div class="ges-name">OhioHealth</div>
+    <div class="ges-note">HQ: OH · Ohio-based hospital system</div>
+  </div>
+  <div class="ges-card">
+    <div class="ges-name">OSU Medical</div>
+    <div class="ges-note">HQ: OH · Academic medical center with rural training partnerships</div>
+  </div>
+  <div class="ges-card">
+    <div class="ges-name">ProMedica</div>
+    <div class="ges-note">HQ: OH · Regional health system in Ohio</div>
+  </div>
+  <div class="ges-card">
+    <div class="ges-name">University Hospitals</div>
+    <div class="ges-note">HQ: OH · Academic health system in Ohio</div>
+  </div>
+  <div class="ges-card">
+    <div class="ges-name">Bon Secours Mercy</div>
+    <div class="ges-note">HQ: OH · Health system with Ohio presence</div>
+  </div>
+  <div class="ges-card">
+    <div class="ges-name">Cincinnati Children's</div>
+    <div class="ges-note">HQ: OH · Pediatric health system in Ohio</div>
+  </div>
+  <p style="font-size:13px;font-weight:600;margin-top:14px">Non-GES health systems identified in Ohio RFP documents:</p>
+  <div class="gap-card">
+    <div class="gap-name">Franklin University</div>
+    <div class="gap-note">On-time RFP respondent; workforce training and education partner</div>
+  </div>
+  <div class="gap-card">
+    <div class="gap-name">Jackson County</div>
+    <div class="gap-note">On-time RFP respondent; local government workforce development</div>
+  </div>
+  <div class="gap-card">
+    <div class="gap-name">Ohio University</div>
+    <div class="gap-note">On-time RFP respondent; academic partner for rural health programs</div>
+  </div>
+  <div class="gap-card">
+    <div class="gap-name">Northern Ohio Medical Specialists LLC</div>
+    <div class="gap-note">On-time RFP respondent; physician recruitment/retention specialist</div>
+  </div>
+  <div class="gap-card">
+    <div class="gap-name">22nd Century Technologies Inc</div>
+    <div class="gap-note">On-time RFP respondent; tech-enabled workforce solutions</div>
+  </div>
+  <div class="gap-card">
+    <div class="gap-name">MGT Impact Solutions, LLC</div>
+    <div class="gap-note">On-time RFP respondent; management consulting for health systems</div>
+  </div>
+  <div class="gap-card">
+    <div class="gap-name">Healthy Interactions, LLC</div>
+    <div class="gap-note">On-time RFP respondent; health workforce partner</div>
+  </div>
+  <div class="gap-card">
+    <div class="gap-name">NOMS Foundation</div>
+    <div class="gap-note">On-time RFP respondent; non-profit workforce development</div>
+  </div>
+  <div class="gap-card">
+    <div class="gap-name">AMI Expeditionary Healthcare, LLC</div>
+    <div class="gap-note">On-time RFP respondent; rural emergency preparedness and workforce</div>
+  </div>
+</section>
+
+<section class="step" id="categories">
+  <span class="step-label">NOFO categories</span>
+  <h2>CMS categories in play in Ohio</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px">
+    <div style="border:1px solid var(--border);border-left:4px solid #7c3aed;border-radius:6px;padding:10px 14px;background:#fff">
+      <span class="cat" style="background:#7c3aed">A</span> <strong style="font-size:13px">Prevention & chronic disease</strong>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px">In 0 of 1 initiatives</div>
+    </div>
+    <div style="border:1px solid var(--border);border-left:4px solid #06b6d4;border-radius:6px;padding:10px 14px;background:#fff">
+      <span class="cat" style="background:#06b6d4">C</span> <strong style="font-size:13px">Consumer tech</strong>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px">In 1 of 1 initiatives</div>
+    </div>
+  </div>
+  <div style="margin-top:12px"><a class="srclink" href="nofo-categories.html">📖 See NOFO category reference for verbatim CMS definitions</a></div>
+</section>
+
+<section class="step" id="sources">
+  <span class="step-label">Sources</span>
+  <h2>Source documents</h2>
+  <div><a class="srclink" href="../RFP Downloads/Ohio/Sourcing Project (extranet): OhioBuys.pdf">📄 OhioBuys RFP Listing</a></div>
+  <div><a class="srclink" href="../RFP Downloads/Ohio/Sourcing Project (extranet): OhioBuys2.pdf">📄 OhioBuys RFP Round 2 Details</a></div>
+  <div><a class="srclink" href="../RFP Downloads/Ohio/Sourcing Project (extranet): OhioBuys3.pdf">📄 OhioBuys RFP Documentation</a></div>
+  <div style="margin-top:12px;font-size:12px;color:var(--muted)">Portal: https://ohiobuys.ohio.gov</div>
+</section>
+
+<nav class="topbar">
+  <div class="left"><a href="index.html">&larr; All States</a></div>
+  <div class="right">
+    <a href="accounts.html">GES Provider Dashboard</a>
+    <a href="nofo-categories.html">📖 NOFO Reference</a>
+  </div>
+</nav>
+
+<footer>Cisco GES · RHTP State Intelligence · Generated from Ohio RFP Downloads folder · Data verified against CMS-RHT-26-001 NOFO categories</footer>
+</div></body></html>
